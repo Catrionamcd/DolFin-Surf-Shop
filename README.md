@@ -1,108 +1,150 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# DolFin Surf Shop
 
-Welcome USER_NAME,
+The DolFin Surf Shop is an E-Commerce shopping site. The site sells surf equipment and accessories. It is targeted at experience surfers and shoppers new to the surfing world.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Multi Screen of the site
+Dolfin-Surf - https://
+![DolFin-Surf](assets/images/.png)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## Design of the site
+### Wireframes
+When designing the look and feel of the site I looked. 
 
-## Gitpod Reminders
+![](assets/images/.png)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+### Data Models
 
-A blue button should appear to click: _Make Public_,
+![Data Model](assets/images/.png)
+## User Stories
 
-Another blue button should appear to click: _Open Browser_.
+## Features/Functions
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Existing Features
 
-A blue button should appear to click: _Make Public_,
+### Registration/Login Forms
+* I created a new layout to the registration of a user to the site. I also created a new layout to the forms for the login and logout screens.
 
-Another blue button should appear to click: _Open Browser_.
+### Navigation Bar
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+![alt text](assets/images/.png)
 
-To log into the Heroku toolbelt CLI:
+* The navigation bar is located at the top of all pages on the site.
+* The options available dynamically change depending on the type of viewer and depending on the specific menu path chosen.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Home button
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
-------
+## Functions
 
-## Release History
+### Future Features 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Technology
+### Language Used
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+* [Python](https://www.python.org) - Python is an interpreted high-level general-purpose programming language. I used Python to access the data in Google Sheets and run the game.
+* [CSS](https://) - Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. 
+* [HTML](https://) - The HyperText Markup Language, or HTML is the standard markup language for documents designed to be displayed in a web browser.
+* [JavaScript](https://) - JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive.
+### Databases 
+* SQLite3 - SQLite is a relational database management system which was used as a test database while developing my webite in GitPod
+* PostgreS - PostgreS is a relational database management system which is used on my deployed site in Heroku.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### Other Technologies and Libraries
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+* [Django](https://www.) - Django is a Python-based free and open-source web framework that follows the model–template–views architectural pattern.
+* [GitPod](https://gitpod.io) - Gitpod is an online cloud based IDE. I developed and tested my project using Gitpod. I added and commited changes with messages and pushed to GitHub.
+* [GitHub](https://github.com) - GitHub is a provider of Internet hosting for software development and version control using Git.
+* [Heroku](https://heroku.com) - Heroku is a cloud platform as a service supporting several programming languages. I used Heroku to deploy and run the project.
+* [Cloudinary](https://cloudinary.com) - is used to store the images that areposted to on the channel posts.
+* [Google Sheets](https://www.google.com/sheets/about/) - used to plan the data moddels story flow, the story content, story prompts and the next steps for the game. 
+* [Diagrams](https://wwww.diagrams.net) - used to create the flowchart for the project.
+* [Bootstrap v5.1](https://getbootstrap.com/) - used for the styling and the reposnive design site.
+* [Balsamiq](https://balsamiq.com/) - used for creating the wireframes while planning the look of the site. Not all the wireframes are exactly like the end product.
+* [Django Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/) - used to generate a django secret key at the begining of the project.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+## Testing
+### Manual Testing
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Validator Testing
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## CSS
+[W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator)
+![alt text](assets/images/.png)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+## HTML
+[Nu Html Checker Validator](https://validator.w3.org/)
+![alt text](assets/images/.png)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## Javascript
+[JShint](https://jshint.com/)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+## Python
+ 
+I ran the admin.py, forms.py, models.py and urls.py through [PEP8](http://pep8online.com) online checker and all now have no errors.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+## Deployment
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+The application uses Heroku for deployement
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### Create the application
+1. Create the requirements file the Heroku will use to import the dependencies required for deployment: type pip3 freeze > requirements.txt. 
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+2. Navigate to the [Heroku](https://heroku.com) website
+3. Create an account by entering your email address and a password
+4. Activate the account through the authentication email sent to your email account
+5. Click the new button and select create a new app from the dropdown menu
+6. Enter a name for the application which must be unique, in this case the app name is called views-it.
+7. Select a region, in this case Europe
+8. Click create app
+## Attach the PostgreSQL databae
+1. Click on the resources tab on the horizontal menu bar to add a database
+2. In the add-ons box search for Postgres
+3. Add Heroku Postgres to the project
+## Heroku settings
+1. From the horizontal menu bar select 'Settings'.
+2. Click on Reveal Config Vars,  this gives us our database url, the connection to our database.
+3. Make sure you have your secret key added
+4. Make sure the Cloudinary Url is added
+5. Tke out any temporary environment variables, such as DISABLE_COLLECT_STATIC.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Deployment
+1. In the top menu bar select 'Deploy'.
+2. In the 'Deployment method' section select 'Github' and click the connect to Github button to confirm.
+3. In the 'search' box enter the Github repository name for the project. Click search and then click connect to link the heroku app with the Github repository. The box will confirm that heroku is connected to the repository which in this case is [](https://github.com/catrionamcd/).
+4. Scroll down to select either automatic or manual deployment. For this project automatic deployment was selected. If you wish to select automatic deployment select the button 'Enable Automatic Deploys'. This will rebuild the app every time a change is pushed to Github. If you wish to manually deploy click the button 'Deploy Branch'. The default 'Master' option in the dropdown menu should be selected in both cases.
+5. When the app is deployed a message 'Your app was successfully deployed' will be shown. Click 'view' to see the deployed app in the browser. The live deployment of the project can be seen here
+6. The app starts automatically and can be restarted by pressing the 'Run Program' button.
 
-------
+## Forking the Repository
+If you wish to fork the repository to make changes without affecting the original you can fork the repository
 
-## FAQ about the uptime script
+1. Navigate to the [](https://github.com/catrionamcd/) repository
+2. Click the 'Fork' button at the top right of the page.
+3. A forked copy of the repository will appear in your Repositories page.
+## Cloning the Repository
+1. On [GitHub](https://github.com) navigate to the main page of the  [](https://github.com/catrionamcd/) repository.
+2. Above the list of files click the dropdown code menu.
+3. Select the https option and copy the link.
+4. Open the terminal.
+5. Change the current working directory to the desired destination location.
+6. Type the git clone command with the copied URL: git clone https://github.com/catrionamcd/.git.
+7. Press enter to create the local clone.
 
-**Why have you added this script?**
+Press enter to create the local clone.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+## Credits
+### Content
 
-**How will this affect me?**
+### Code
+* Mastering Django by Nigel George
+* Code Institute - https://codeinstitute.net/.com
+* Bootstrap - https://getbootstrap.com/docs
+* w3schools - https://www.w3schools.com
+* stackoverflow - https://www.stackoverflow.com
+* pythontutorials - https://www.pythontutorial.net
+* geeksforgeeks - https://www.geekforgeek.org
+* python - https://docs.python.org
+* OrdinaryCoders - https://www.ordinarycoders.com
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
