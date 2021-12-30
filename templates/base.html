@@ -23,7 +23,7 @@
     {% endblock %}
 
     {% block corejs %}
-        <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/3e14052318.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -34,15 +34,15 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>DolFIn Surf Shop {% block extra_title %}{% endblock %}</title>
+    <title>DolFin Surf Shop {% block extra_title %}{% endblock %}</title>
   </head>
 
   <body>
     <header class="container-fluid fixed-top">
-        <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
+        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font text-primary my-0"><strong>DolFin</strong> Surf Shop</h2>
+                    <h2 class="logo-font my-0 text-black"><strong>DolFin</strong> Surf Shop</h2>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
@@ -84,12 +84,12 @@
                     <li class="list-inline-item">
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
                             <div class="text-center">
-                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                <div><i class="fas fa-shopping-basket fa-lg"></i></div>
                                 <p class="my-0">
                                     {% if grand_total %}
-                                        ${{ grand_total|floatformat:2 }}
+                                        €{{ grand_total|floatformat:2 }}
                                     {% else %}
-                                        $0.00
+                                        €0.00
                                     {% endif %}
                                 </p>
                             </div>
@@ -99,16 +99,28 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row bg-white">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav" aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 {% include 'includes/mobile-top-header.html' %}
-                {% include 'includes/main-nav.html' %}
+                {% include 'includes/mobile-nav.html' %}
             </nav>
         </div>
+
+        <hr>
+
+        <div class="row bg-white">
+            <div class ="d-md-block" id="sidebar">
+                <nav class="navbar navbar-expand-lg navbar-light w-100">
+                    {% include 'includes/main-nav.html' %}
+                </nav>
+            </div>
+        </div>
+        
     </header>
+    
 
     {% if messages %}
         <div class="message-container"></div>
@@ -117,7 +129,7 @@
     {% block page_header %}
     {% endblock %}
 
-    {% block content %}
+    {% block content %}    
     {% endblock %}
 
     {% block postloadjs %}
