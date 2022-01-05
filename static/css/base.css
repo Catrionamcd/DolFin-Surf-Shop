@@ -100,7 +100,7 @@ body {
 	top: 0;
 	left: 0;
 	position: fixed;
-	background: white;
+	background: #a9f6fc;
 	z-index: -1;
 }
 
@@ -298,14 +298,14 @@ input[name='q']::placeholder {
     }
 
     .header-container {
-        padding-top: 164px;
+        padding-top: 100px;
     }
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 116px;
+        padding-top: 80px;
     }
 
     body {
