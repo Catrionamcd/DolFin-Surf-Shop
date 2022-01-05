@@ -1,4 +1,6 @@
-from django.contrib import admin
+"""
+    Urls for home app
+"""
 from django.urls import path
 from . import views
 
