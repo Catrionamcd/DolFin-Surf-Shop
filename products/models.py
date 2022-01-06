@@ -30,6 +30,9 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
 
+    def get_category_name(self):
+        return self.category_name
+
 
 class Brand(models.Model):
     """
