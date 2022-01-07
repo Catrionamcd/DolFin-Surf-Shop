@@ -1,19 +1,85 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page-header %}
+{% block page_header %}
     <div class="container header-container">
         <div class="row">
             <div class="col"></div>
         </div>
     </div>
-
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">    
-           
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center mt-1">
+                <h4>Shop Now!!</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-container col-9 offset-3">
+                <div class="row mt-2 mb-3"></div>
+                <div class="row">
+                    <div class="col-md-3 mr-3">
+                    <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3"> -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <a href="{% url 'products' %}" class="card-link mb-3">Swimwear</a>
+                                <div class="image-container">
+                                    <img class="card-img-top" src="/media/swimwear.jpg" alt="Image of Swimwear">
+                                    <p class="card-text mt-2">Shop all swimwear and some more text.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class="col-md-3 mr-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    <a href="{% url 'products' %}" class="card-link card-title">Wetsuits</a>
+                                    <img class="card-img-top" src="/media/woman-wetsuit.jpg" alt="Image of Wetsuits">
+                                    <p class="card-text mt-2">Shop all wetsuits and some more text.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mr-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    <a href="#" class="card-link card-title mb-1">Boards</a>
+                                    <img class="card-img-top" src="/media/surf-boards.jpg" alt="Image of Swimwear">
+                                    <p class="card-text mt-2">Shop all boards and some more text.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 mr-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    <a href="#" class="card-link card-title">Acessories</a>
+                                    <img class="card-img-top" src="/media/surf-van.jpg" alt="Image of Wetsuits">
+                                    <p class="card-text mt-2">Shop accessories and some more text.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mr-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    <a href="#" class="card-link card-title">Gift Cards</a>
+                                    <img class="card-img-top" src="/media/starfish.jpg" alt="Image of Wetsuits">
+                                    <p class="card-text mt-2">Gift Cards available and some more text.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

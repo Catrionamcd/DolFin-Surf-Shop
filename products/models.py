@@ -22,7 +22,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     category_name_slug = models.CharField(max_length=50, unique=True)
-    category_name = models.CharField(max_length=50, null=False, blank=False)
+    name = models.CharField(max_length=50, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
     sale_percent = models.IntegerField(null=False, blank=False, default=0)
     giftcard_category = models.BooleanField(null=True, blank=True, default=False)

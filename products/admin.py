@@ -14,11 +14,11 @@ class CategoryAdmin(admin.ModelAdmin):
     """
         Admin for the for the Category Model.
     """
-    prepopulated_fields = {'category_name_slug': ('category_name',)}
-    fields = ('category_name', 'category_name_slug', 'sale_percent',
+    prepopulated_fields = {'category_name_slug': ('name',)}
+    fields = ('name', 'category_name_slug', 'sale_percent',
               'giftcard_category')
     list_display = (
-        'category_name',
+        'name',
         'category_name_slug',
         'sale_percent',
         'giftcard_category'
