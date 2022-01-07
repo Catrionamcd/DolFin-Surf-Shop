@@ -70,6 +70,22 @@ class Product(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     has_gender = models.BooleanField(default=False, null=True, blank=True)
+    MALE = 'M'
+    FEMALE = 'F'
+    JMALE = 'JM'
+    JFEMALE = 'JF'
+    GENDER_CHOICES = [
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
+        (JMALE, 'Junior Male'),
+        (JFEMALE, 'Junior Female'),
+    ]
+    gender = models.CharField(
+        max_length=2,
+        null=True,
+        blank=True,
+        choices=GENDER_CHOICES,
+    )
     has_colours = models.BooleanField(default=False, null=True, blank=True)
     has_length = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -98,6 +114,7 @@ class ProductInventory(models.Model):
                                 on_delete=models.SET_NULL)
     colour = models.ForeignKey('Colour', null=True, blank=True,
                                on_delete=models.SET_NULL)
+
     XTRASMALL = 'XS'
     SMALL = 'S'
     MEDIUM = 'M'
@@ -116,22 +133,7 @@ class ProductInventory(models.Model):
         blank=True,
         choices=SIZE_CHOICES,
     )
-    MALE = 'M'
-    FEMALE = 'F'
-    JMALE = 'JM'
-    JFEMALE = 'JF'
-    GENDER_CHOICES = [
-        (MALE, 'Male'),
-        (FEMALE, 'Female'),
-        (JMALE, 'Junior Male'),
-        (JFEMALE, 'Junior Female'),
-    ]
-    gender = models.CharField(
-        max_length=2,
-        null=True,
-        blank=True,
-        choices=GENDER_CHOICES,
-    )
+
     SHORT = 'S'
     MID = 'M'
     LONG = 'L'
@@ -146,9 +148,10 @@ class ProductInventory(models.Model):
         blank=True,
         choices=LENGTH_CHOICES,
     )
+
     quantity = models.IntegerField(null=False, blank=False, default=0)
 
     def __str__(self):
         return f'Product: {self.product}, Colour: {self.colour}, \
-            Size: {self.size}, Gender: {self.gender}, Length: {self.length},\
+            Size: {self.size}, Length: {self.length},\
             Quantity: {self.quantity}'

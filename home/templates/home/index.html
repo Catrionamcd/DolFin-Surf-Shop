@@ -18,18 +18,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="product-container col-9 offset-3">
+            <div class="col-2" id="sidebar">
+                <nav class="col-2 navbar d-none d-md-block navbar-default navbar-light w-100 h-100">
+                    <button class="navbar-toggler" type="button" hidden data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="true" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    {% include 'includes/main-nav.html' %}
+                </nav>
+            </div>
+            <div class="product-container col-10">
                 <div class="row mt-2 mb-3"></div>
                 <div class="row">
                     <div class="col-md-3 mr-3">
                     <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3"> -->
                         <div class="card mb-4">
                             <div class="card-body">
-                                <a href="{% url 'products' %}" class="card-link mb-3">Swimwear</a>
-                                <div class="image-container">
-                                    <img class="card-img-top" src="/media/swimwear.jpg" alt="Image of Swimwear">
-                                    <p class="card-text mt-2">Shop all swimwear and some more text.</p>
-                                </div>
+                                <a href="{% url 'products' %}" class="card-link mb-3">Swimwear
+                                    <div class="image-container"> 
+                                        <img class="card-img-top" src="/media/swimwear.jpg" alt="Image of Swimwear">
+                                        <p class="card-text mt-2">Shop all swimwear and some more text.</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>    
