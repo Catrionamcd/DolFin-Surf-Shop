@@ -82,9 +82,3 @@ class ProductInventoryAdmin(admin.ModelAdmin):
         'quantity'
     )
 
-
-# admin.site.register(Category, CategoryAdmin)
-# admin.site.register(Brand, BrandAdmin)
-# admin.site.register(Colour, ColourAdmin)
-# admin.site.register(Product, ProductAdmin)
-# admin.site.register(ProductInventory, ProductInventoryAdmin)

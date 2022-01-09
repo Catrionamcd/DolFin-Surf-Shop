@@ -28,10 +28,10 @@ class Category(models.Model):
     giftcard_category = models.BooleanField(null=True, blank=True, default=False)
 
     def __str__(self):
-        return self.category_name
+        return self.name
 
     def get_category_name(self):
-        return self.category_name
+        return self.name
 
 
 class Brand(models.Model):
