@@ -189,6 +189,7 @@ If you wish to fork the repository to make changes without affecting the origina
 Press enter to create the local clone.
 
 ## Credits
+https://css-tricks.com/indeterminate-checkboxes/#top-of-site
 ### Content
 
 ### Code
