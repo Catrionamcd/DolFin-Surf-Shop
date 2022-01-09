@@ -81,4 +81,3 @@ class ProductInventoryAdmin(admin.ModelAdmin):
         'length',
         'quantity'
     )
-

@@ -201,5 +201,6 @@ Press enter to create the local clone.
 * geeksforgeeks - https://www.geekforgeek.org
 * python - https://docs.python.org
 * OrdinaryCoders - https://www.ordinarycoders.com
+* Css Tricks - https://www.csstricks.com
 
 
