@@ -111,7 +111,8 @@ on the site"
 * [GitPod](https://gitpod.io) - Gitpod is an online cloud based IDE. I developed and tested my project using Gitpod. I added and commited changes with messages and pushed to GitHub.
 * [GitHub](https://github.com) - GitHub is a provider of Internet hosting for software development and version control using Git.
 * [Heroku](https://heroku.com) - Heroku is a cloud platform as a service supporting several programming languages. I used Heroku to deploy and run the project.
-* [Cloudinary](https://cloudinary.com) - is used to store the images that areposted to on the channel posts.
+* [AWS](https://aws.amazon.com) - provides cloud computing platform for images of product sold on the site.
+* [Stripe](https://stripe.com) - provides financial services for the site.
 * [Google Sheets](https://www.google.com/sheets/about/) - used to plan the data moddels story flow, the story content, story prompts and the next steps for the game. 
 * [Diagrams](https://wwww.diagrams.net) - used to create the flowchart for the project.
 * [Bootstrap v5.1](https://getbootstrap.com/) - used for the styling and the reposnive design site.
