@@ -5,16 +5,22 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.db.models.functions import Lower
 from .models import Product, Category
 from .forms import ProductForm
+from checkout.models import Order, OrderLineItem
 
 
 def all_products(request):
     """
         A view to show all products
     """
+
+    categories_list = Category.objects.all().annotate(subcat_count=Count('subcategory'))
+    for cat in categories_list:
+        print(cat)
+
     products = Product.objects.all()
     query = None
     categories = None
@@ -52,6 +58,7 @@ def all_products(request):
     current_sorting = f'{sort}_{direction}'
 
     context = {
+        'categories_list': categories_list,
         'products': products,
         'search_term': query,
         'current_categories': categories,
@@ -66,8 +73,40 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
+    """ Get Product that was ordered the most while ordering this selected product """
+    """ First get a list of all Orders that include this selected Product """
+    orders_with_this_product = OrderLineItem.objects.filter(product=product_id).values_list('order',flat=True)
+    """ Next get a list of Product Items ordered in all of the Orders retrieved above BUT not giftcards """
+    all_products_in_these_orders = OrderLineItem.objects.filter(order__in=orders_with_this_product)
+    """ Now Count how many times each product was ordered across all of these Orders """
+    each_product_count = all_products_in_these_orders.values('product').order_by('product').annotate(num_ordered=Count('product'))
+    """ Finally sequence from largest to smallest count """
+    each_product_count_desc = each_product_count.all().order_by('-num_ordered')
+
+    freq_bought_together = ""
+    # print(product_id)
+    # print(product)
+    """ First check if any additional products in the list. Current product plus at least one other """
+    """ Only interested in highest count so take from start of list """
+    if len(each_product_count_desc) > 1:
+        """ first check if current product is at start of list and if it is then take the next one on the list """
+        if not each_product_count_desc[0]['product'] == product_id:
+            """ Must have been order at least 3 times with this product to be considered as Frequently Bought Together """
+            if each_product_count_desc[0]['num_ordered'] > 2:
+                freq_bought_together_id = each_product_count_desc[0]['product']
+                freq_bought_together = get_object_or_404(Product, pk=freq_bought_together_id)
+        else:
+            if each_product_count_desc[1]['num_ordered'] > 2:
+                freq_bought_together_id = each_product_count_desc[1]['product']
+                freq_bought_together = get_object_or_404(Product, pk=freq_bought_together_id)
+
+
+
+
+
     context = {
         'product': product,
+        'freq_bought_together': freq_bought_together,
     }
 
     return render(request, 'products/product_detail.html', context)

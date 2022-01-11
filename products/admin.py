@@ -5,7 +5,7 @@
 """
 
 from django.contrib import admin
-from .models import Category, Brand, Colour
+from .models import Category, SubCategory, Brand, Colour
 from .models import Product, ProductInventory
 
 
@@ -22,6 +22,15 @@ class CategoryAdmin(admin.ModelAdmin):
         'category_name_slug',
         'sale_percent',
         'giftcard_category'
+    )
+
+
+@admin.register(SubCategory)
+class SubCategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'category',
+        'friendly_name',
+        'name'
     )
 
 
