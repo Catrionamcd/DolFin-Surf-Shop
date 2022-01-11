@@ -18,8 +18,6 @@ def all_products(request):
     """
 
     categories_list = Category.objects.all().annotate(subcat_count=Count('subcategory'))
-    for cat in categories_list:
-        print(cat)
 
     products = Product.objects.all()
     query = None
