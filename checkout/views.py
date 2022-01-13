@@ -10,12 +10,14 @@ from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
 
+import os
 import stripe
 import json
 
 
 @require_POST
 def cache_checkout_data(request):
+    print('CACHE BEING CALLED')
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -63,7 +65,7 @@ def checkout(request):
                         order_line_item = OrderLineItem(
                             order=order,
                             product=product,
-                            product_inventory=product_inventory,
+                            product_inventory=None,
                             quantity=item_data,
                         )
                         order_line_item.save()
@@ -84,7 +86,8 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
-
+                    
+            # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:

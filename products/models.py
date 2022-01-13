@@ -21,7 +21,7 @@ class Category(models.Model):
         """
         verbose_name_plural = 'Categories'
 
-    category_name_slug = models.CharField(max_length=50, unique=True)
+    category_name_slug = models.SlugField(max_length=50, unique=True)
     name = models.CharField(max_length=50, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
     sale_percent = models.IntegerField(null=False, blank=False, default=0)
@@ -40,7 +40,7 @@ class SubCategory(models.Model):
         verbose_name_plural = 'SubCategories'
         
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
-    name = models.CharField(max_length=254)
+    name = models.SlugField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
@@ -79,6 +79,7 @@ class Product(models.Model):
         The Product Model will hold the Product details
     """
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    subcategory = models.ForeignKey('SubCategory', null=True, blank=True, on_delete=models.SET_NULL)
     brand = models.ForeignKey('Brand', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
@@ -103,7 +104,6 @@ class Product(models.Model):
         choices=GENDER_CHOICES,
     )
     has_colours = models.BooleanField(default=False, null=True, blank=True)
-    has_length = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
@@ -150,24 +150,10 @@ class ProductInventory(models.Model):
         choices=SIZE_CHOICES,
     )
 
-    SHORT = 'S'
-    MID = 'M'
-    LONG = 'L'
-    LENGTH_CHOICES = [
-        (SHORT, 'Short'),
-        (MID, 'Mid-Length'),
-        (LONG, 'Long'),
-    ]
-    length = models.CharField(
-        max_length=2,
-        null=True,
-        blank=True,
-        choices=LENGTH_CHOICES,
-    )
-
+    image_url = models.URLField(max_length=1024, null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=0)
 
     def __str__(self):
         return f'Product: {self.product}, Colour: {self.colour}, \
-            Size: {self.size}, Length: {self.length},\
-            Quantity: {self.quantity}'
+            Size: {self.size}, Quantity: {self.quantity}'
