@@ -16,7 +16,7 @@ class CategoryAdmin(admin.ModelAdmin):
     """
     prepopulated_fields = {'category_name_slug': ('name',)}
     fields = ('name', 'category_name_slug', 'sale_percent',
-              'giftcard_category')
+              'image', 'giftcard_category')
     list_display = (
         'name',
         'category_name_slug',
