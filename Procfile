@@ -1,1 +1,1 @@
-web: gunicorn dolfin_surf_shop.wsgi:application
+web: gunicorn dolfin_surf.wsgi:application
