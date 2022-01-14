@@ -161,8 +161,10 @@ The application uses Heroku for deployement
 1. From the horizontal menu bar select 'Settings'.
 2. Click on Reveal Config Vars,  this gives us our database url, the connection to our database.
 3. Make sure you have your secret key added
-4. Make sure the Cloudinary Url is added
-5. Tke out any temporary environment variables, such as DISABLE_COLLECT_STATIC.
+4. Make sure the AWS settings are added for your media and static files
+5. Make sure your Email user and email host pass are added
+6. Make sure your Stripe keys are added
+6. Take out any temporary environment variables, such as DISABLE_COLLECT_STATIC.
 
 ### Deployment
 1. In the top menu bar select 'Deploy'.
