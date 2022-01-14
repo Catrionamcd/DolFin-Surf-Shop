@@ -30,7 +30,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 # DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dolfin-surf-shop.herokuapp.com', 'localhost']
 
 
 # Application definition
