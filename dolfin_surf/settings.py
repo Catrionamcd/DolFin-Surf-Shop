@@ -28,8 +28,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-# DEBUG = True
-
 ALLOWED_HOSTS = ['dolfin-surf-shop.herokuapp.com', 'localhost']
 
 
@@ -54,7 +52,7 @@ INSTALLED_APPS = [
 
     # Other
     'crispy_forms',
-    'storages'
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -206,14 +204,6 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
    
 
-FREE_DELIVERY_THRESHOLD = 50
-STANDARD_DELIVERY_PERCENTAGE = 10
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Stripe
 FREE_DELIVERY_THRESHOLD = 50
