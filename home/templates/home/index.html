@@ -29,64 +29,25 @@
             <div class="product-container col-10">
                 <div class="row mt-2 mb-3"></div>
                 <div class="row">
-                    <div class="col-md-3 mr-3">
-                    <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3"> -->
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <a href="{% url 'products' %}" class="card-link mb-3">Swimwear
-                                    <div class="image-container"> 
-                                        <img class="card-img-top" src="/media/swimwear.jpg" alt="Image of Swimwear">
-                                        <p class="card-text mt-2">Shop all swimwear and some more text.</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>    
-                    <div class="col-md-3 mr-3">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    <a href="{% url 'products' %}" class="card-link card-title">Wetsuits</a>
-                                    <img class="card-img-top" src="/media/woman-wetsuit.jpg" alt="Image of Wetsuits">
-                                    <p class="card-text mt-2">Shop all wetsuits and some more text.</p>
+                    {% for category in categories %}
+                        <div class="col-md-3 mr-3">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <a href="{% url 'products' %}" class="card-link">
+                                        <p class="card-title mt-2 logo-font">{{ category.name }}</p>
+                                        <div class="image-container mt-3"> 
+                                            {% if category.image %}
+                                                <img class="card-img-top img-fluid" src="{{ category.image.url }}" alt="{{ category.name }}">
+                                            {% else %}
+                                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ category.name }}"style="height:220px;">
+                                            {% endif %}
+                                            <p class="card-text mt-3">Click to shop for all brands.</p>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mr-3">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    <a href="#" class="card-link card-title mb-1">Boards</a>
-                                    <img class="card-img-top" src="/media/surf-boards.jpg" alt="Image of Swimwear">
-                                    <p class="card-text mt-2">Shop all boards and some more text.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-3 mr-3">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    <a href="#" class="card-link card-title">Acessories</a>
-                                    <img class="card-img-top" src="/media/surf-van.jpg" alt="Image of Wetsuits">
-                                    <p class="card-text mt-2">Shop accessories and some more text.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mr-3">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    <a href="#" class="card-link card-title">Gift Cards</a>
-                                    <img class="card-img-top" src="/media/surfer-in-wave.jpg" alt="Image of Wetsuits">
-                                    <p class="card-text mt-2">Gift Cards available and some more text.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>     
+                        </div>    
+                    {% endfor %}
                 </div>
             </div>
         </div>
