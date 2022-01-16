@@ -8,6 +8,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Surf Shop, Wetsuits Boards Swimwear for sale">
+        <meta name="keywords" content="Surf Shop, Wetsuits, Boards, Swimwear, surfing">
     {% endblock %}
 
     {% block extra_meta %}
@@ -41,9 +43,15 @@
     <header class="container-fluid fixed-top">
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+                <!-- <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                    <h2 class="my-0 text-black">
+                        <img src="{{ MEDIA_URL }}dolfin-logo1.png" style="height:65px"alt="Image of Logo">
+                    </h2>
+                </a> -->
+
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font my-0 text-black">
-                        <img src="{{ MEDIA_URL }}dolfin-logo.png" alt="Image of Logo" style="height:65px">
+                    <h2 class="my-0 text-black">
+                        <img src="{{ MEDIA_URL }}dolfin-logo.png" style="height:65px"alt="Image of Logo">
                         <strong>DolFin</strong> Surf Shop</h2>
                 </a>
             </div>
@@ -67,7 +75,11 @@
                         <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-swimmer fa-lg"></i></div>
-                                <p class="my-0">My Account</p>
+                                {% if user.is_authenticated %}
+                                    <p> {{ user }} Profile</p>
+                                {% else %}
+                                    <p class="my-0">Login/Register</p>
+                                {% endif %}
                             </div>
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
@@ -100,6 +112,12 @@
                 </ul>
             </div>
         </div>
+
+        <!-- <div id="delivery-banner" class="row text-center">
+            <div class="col bg-black text-white">
+                <h4>Free delivery on orders over €{{ free_delivery_threshold }}!</h4>                
+            </div>            
+        </div> -->
 
         <div class="row bg-white mb-4">
             <nav class="navbar navbar-light w-100">

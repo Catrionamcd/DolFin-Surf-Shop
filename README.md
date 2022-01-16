@@ -3,7 +3,7 @@
 The DolFin Surf Shop is an E-Commerce shopping site. The site sells surf equipment and accessories. It is targeted at experience surfers and shoppers new to the surfing world.
 
 ## Multi Screen of the site
-Dolfin-Surf - https://
+Dolfin-Surf Shop - https://
 ![DolFin-Surf](assets/images/.png)
 
 ## Design of the site
@@ -118,6 +118,10 @@ on the site"
 * [Bootstrap v5.1](https://getbootstrap.com/) - used for the styling and the reposnive design site.
 * [Balsamiq](https://balsamiq.com/) - used for creating the wireframes while planning the look of the site. Not all the wireframes are exactly like the end product.
 * [Django Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/) - used to generate a django secret key at the begining of the project.
+* [XML-Sitemaps](https://www.xml-sitemaps.com/) - used to generate sitemap.xl file for search engine optimisation for the site.
+* [Facebook](http://facebook.com) - used to create a facebook page for the site.
+* [Mailchimp](https://mailchimp.com) - used for the newsletter.
+* [PicResize](https://picresize.com) - used to resize images for better performance when rendering the images.
 
 ## Testing
 ### Manual Testing
@@ -192,12 +196,11 @@ If you wish to fork the repository to make changes without affecting the origina
 Press enter to create the local clone.
 
 ## Credits
-https://css-tricks.com/indeterminate-checkboxes/#top-of-site
-### Content
-
 ### Code
+https://css-tricks.com/indeterminate-checkboxes/#top-of-site
+
 * Mastering Django by Nigel George
-* Code Institute - https://codeinstitute.net/.com
+* Code Institute - https://codeinstitute.net/.com (Boutique Ado E-Commerce Site)
 * Bootstrap - https://getbootstrap.com/docs
 * w3schools - https://www.w3schools.com
 * stackoverflow - https://www.stackoverflow.com
@@ -206,5 +209,14 @@ https://css-tricks.com/indeterminate-checkboxes/#top-of-site
 * python - https://docs.python.org
 * OrdinaryCoders - https://www.ordinarycoders.com
 * Css Tricks - https://www.csstricks.com
+
+### Media
+
+* [Pexels](https://www.pexels.com) - was used for images for the cards categories on the home page.
+* [Pixaby](https://www.pixaby.com) - was used for images for the cards categories on the home page.
+* [Wetsuit Outlet](https://www.wetsuitoutlet.ie) - was used for images of the various different products.
+* [Billabong](https://www.billabong-store.ie) - was used for images of different colour wetsuits.
+
+
 
 

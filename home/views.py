@@ -7,7 +7,7 @@ from products.models import Category
 def index(request):
     """A view to return the index page"""
 
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('giftcard_category')
 
     context = {
         'categories': categories
