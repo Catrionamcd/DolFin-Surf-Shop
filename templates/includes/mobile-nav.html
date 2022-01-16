@@ -5,12 +5,18 @@
                 Home
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class=" font-weight-bold nav-link text-black mr-5">
+                Category
+            </a>
+        </li>
         {% for category_item in categories_list %}      
         <li class="nav-item dropdown">       
             
-            <input class="form-check-input ml-1" type="checkbox" name="main-cat" id="main-cat-{{ category_item.id }}" value="{{ category_item.id }}">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5 ml-4 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
-                href="#" id="{{ category_item.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <input class="form-check-input ml-1" type="checkbox" name="mob-cat" id="mob-cat-{{ category_item.id }}" value="{{ category_item.id }}">
+            <a class="text-black text-nowrap mr-5 ml-4 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
+                id="{{ category_item.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ category_item.name }}  
             </a>
             
@@ -20,8 +26,8 @@
             
                 {% for subcategory_item in category_item.subcategory_set.all %}
                 
-                <a href="{% url 'products' %}?category=bed_bath" class="dropdown-item pt-0 mb-0 pb-0">
-                    <input type="checkbox" name="main-sub" id="main-sub-{{ subcategory_item.id }}" value="{{ subcategory_item.id }}">
+                <a class="dropdown-item pt-0 mb-0 pb-0">
+                    <input type="checkbox" name="mob-sub" id="mob-sub-{{ subcategory_item.id }}" value="{{ subcategory_item.id }}">
                     {{ subcategory_item.friendly_name }}
                 </a>
                 
@@ -31,5 +37,77 @@
             {% endif %}
         </li>
         {% endfor %}
+
+        <li class="nav-item">
+            <a class=" font-weight-bold nav-link text-black mr-5">
+                Brand
+            </a>
+        </li>  
+        {% for brand in brands %}      
+        <li class="nav-item dropdown">       
+            
+            <input class="form-check-input ml-1" type="checkbox" name="mob-brand" id="mob-brand-{{ brand.id }}" value="{{ brand.id }}">
+            <a class="text-black text-nowrap mr-5 ml-4" 
+                id="{{ brand.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ brand.brand_name }}  
+            </a>
+        </li>
+        {% endfor %}
+
+        <li class="nav-item">
+            <a class=" font-weight-bold nav-link text-black mr-5">
+                Colour
+            </a>
+        </li>  
+        {% for colour in colours %}      
+        <li class="nav-item dropdown">       
+            
+            <input class="text-black text-nowrap form-check-input ml-1" type="checkbox" name="mob-colour" id="mob-colour-{{ colour.id }}" value="{{ colour.id }}">
+            <a class="text-black text-nowrap mr-5 ml-4" 
+                id="{{ colour.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ colour.colour }}  
+            </a>
+        </li>
+        {% endfor %}
+
     </ul>
 </div>
+
+<script type="text/javascript">
+
+    if ("{{ cat_checked }}") {
+        var cat_checked = JSON.parse('{{ cat_checked }}');
+        for (i = 0; i < cat_checked.length; ++i) {
+            document.getElementById("mob-cat-"+cat_checked[i]).checked=true;
+        }
+    }
+
+    if ("{{ cat_indeterminate }}") {
+        var cat_indeterminate = JSON.parse('{{ cat_indeterminate }}');
+        for (i = 0; i < cat_indeterminate.length; ++i) {
+            document.getElementById("mob-cat-"+cat_indeterminate[i]).indeterminate=true;
+        }
+    }
+
+    if ("{{ sub_checked }}") {
+        var sub_checked = JSON.parse('{{ sub_checked }}');
+        for (i = 0; i < sub_checked.length; ++i) {
+            document.getElementById("mob-sub-"+sub_checked[i]).checked=true;
+        }
+    }
+
+    if ("{{ brand_checked }}") {
+        var brand_checked = JSON.parse('{{ brand_checked }}');
+        for (i = 0; i < brand_checked.length; ++i) {
+            document.getElementById("mob-brand-"+brand_checked[i]).checked=true;
+        }
+    }
+
+    if ("{{ colour_checked }}") {
+        var colour_checked = JSON.parse('{{ colour_checked }}');
+        for (i = 0; i < colour_checked.length; ++i) {
+            document.getElementById("mob-colour-"+colour_checked[i]).checked=true;
+        }
+    }
+
+</script>

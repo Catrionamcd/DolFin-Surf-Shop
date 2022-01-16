@@ -13,8 +13,8 @@
     <div class="overlay"></div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col text-center mt-1">
-                <h4>All Products</h4>
+            <div class="col text-center mt-3">
+                <h2 class="logo-font">Products</h2>
                 {% for c in current_categories %}
                 <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
                     <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.name }}</span>
@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-2" id="sidebar">
-                <nav class="col-2 navbar d-none d-md-block navbar-default navbar-light w-100 h-100">
+            <div class="col-2 border-right" id="sidebar">
+                <nav class="navbar d-none d-md-block navbar-default navbar-light w-100 h-100">
                     <button class="navbar-toggler" type="button" hidden data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="true" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -33,7 +33,7 @@
                 </nav>
             </div>
             <div class="product-container col-12 col-md-10">
-                <div class="row mt-2 mb-3">
+                <div class="row mt-1 mb-2">
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                         <div class="sort-select-wrapper w-50">
                             <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
@@ -54,7 +54,7 @@
                             {% if search_term or current_categories or current_sorting != 'None_None' %}
                                 <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
                             {% endif %}
-                            {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                            {{ product_count }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                         </p>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
+                                            <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                                             {% if product.rating %}
                                                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                                             {% else %}
@@ -85,32 +85,32 @@
                                             {% endif %}
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
-                                                    <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                                    <a href="{% url 'edit_product' product.id %}">Edit</a>  
                                                     <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                                                 </small>
-                                            {% endif %} 
+                                            {% endif %}     
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {% if forloop.counter|divisibleby:1 %}
-                            <div class="col-12 d-sm-none mb-3">
+                            <div class="col-12 d-sm-none mb-5">
                                 <hr>
                             </div>
                         {% endif %}                        
                         {% if forloop.counter|divisibleby:2 %}
-                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-3">
+                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
                                 <hr>
                             </div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:3 %}
-                            <div class="col-12 d-none d-lg-block d-xl-none mb-3">
+                            <div class="col-12 d-none d-lg-block d-xl-none mb-5">
                                 <hr>
                             </div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:4 %}
-                            <div class="col-12 d-none d-xl-block mb-3">
+                            <div class="col-12 d-none d-xl-block mb-5">
                                 <hr>
                             </div>
                         {% endif %}
@@ -119,11 +119,21 @@
             </div>
         </div>
     </div>
+    <div class="btt-button shadow-sm rounded-0 border border-black">
+        <a class="btt-link d-flex h-100">
+            <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+        </a>	
+    </div>
 {% endblock %}
-
 
 {% block postloadjs %}
     {{ block.super }}
+
+    <script type="text/javascript">
+		$('.btt-link').click(function(e) {
+			window.scrollTo(0,0)
+		})
+	</script>
     
     <script type="text/javascript">
         $('#sort-selector').change(function() {

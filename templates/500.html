@@ -1,22 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content%}
-<div class="row my-auto">
-  <div class="col">
-    <h1>Ooops something went wrong! Server Error 500</h1>
-    <div>
-      <img src="{{ MEDIA_URL }}dolfin-logo1.png" style="height:65px"alt="Image of Logo">
-      <div>
-        <p>Back on the board and catch the next wave. Click below!</p>
-        <a href="{% url 'home' %}" class="btn btn-outline-dark mt-2">
-          <span>
-            <i class="fas fa-chevron-left"></i>
-          </span>
-        </a>
-    </div>
-  </div>
-</div>
 
+<div class="overlay"></div>
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+      <h1>Ooops something went wrong! Sever Error 500</h1>
+
+      <div class="row">
+        <div class="col">
+            <h2>Back on the board and catch the next wave.</h2>
+            <a href="{% url 'home' %}" class="btn btn-outline-dark mt-2">
+              <span>
+                Click Here
+                <i class="fas fa-chevron-left"></i>
+              </span>
+            </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col mt-3">      
+            <img src="{{ MEDIA_URL }}dolfin-logo.png" style="height:65px"alt="Image of Logo">
+        </div>
+      </div>
+  
+</div>
 
 
 {% endblock %}
