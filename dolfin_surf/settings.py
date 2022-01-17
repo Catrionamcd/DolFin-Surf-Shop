@@ -66,6 +66,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
 ROOT_URLCONF = 'dolfin_surf.urls'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

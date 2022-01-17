@@ -11,6 +11,8 @@ from django.db.models.functions import Lower
 from .models import Product, Category, SubCategory, Brand, Colour
 from .forms import ProductForm
 from checkout.models import Order, OrderLineItem
+from django.core.paginator import Paginator
+
 
 def update_session(request):
 
@@ -130,13 +132,16 @@ def all_products(request):
     current_sorting = f'{sort}_{direction}'
 
     product_count = products.count()
+    paginator = Paginator(products, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'categories_list': categories_list,
         'brands': brands,
         'colours': colours,
         'genders': genders,
-        'products': products,
+        'products': page_obj,
         'product_count': product_count,
         'search_term': query,
         'current_categories': categories,
@@ -147,6 +152,7 @@ def all_products(request):
         'brand_checked': brand_checked,
         'colour_checked': colour_checked,
         'gender_checked': gender_checked,
+        'is_paginated': True,
     }
 
     return render(request, 'products/products.html', context)
