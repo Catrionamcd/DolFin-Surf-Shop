@@ -78,7 +78,7 @@ def all_products(request):
         colour_checked = list(colours.values_list('id', flat=True))
 
     # """ First get full product list and annotate the sale price of each item """                
-    products = Product.objects.all().filter(
+    products = Product.objects.all().exclude(obsolete=True).filter(
         Q(category__in=cat_checked) | Q(subcategory__in=sub_checked),
         Q(brand__in=brand_checked)
     )
@@ -119,11 +119,14 @@ def all_products(request):
 
     current_sorting = f'{sort}_{direction}'
 
+    product_count = products.count()
+
     context = {
         'categories_list': categories_list,
         'brands': brands,
         'colours': colours,
         'products': products,
+        'product_count': product_count,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
@@ -147,7 +150,7 @@ def product_detail(request, product_id):
     """ First get a list of all Orders that include this selected Product """
     orders_with_this_product = OrderLineItem.objects.filter(product=product_id).values_list('order',flat=True)
     """ Next get a list of Product Items ordered in all of the Orders retrieved above BUT not giftcards """
-    all_products_in_these_orders = OrderLineItem.objects.filter(order__in=orders_with_this_product)
+    all_products_in_these_orders = OrderLineItem.objects.filter(order__in=orders_with_this_product).exclude(product__obsolete=True)
     """ Now Count how many times each product was ordered across all of these Orders """
     each_product_count = all_products_in_these_orders.values('product').order_by('product').annotate(num_ordered=Count('product'))
     """ Finally sequence from largest to smallest count """
@@ -170,13 +173,15 @@ def product_detail(request, product_id):
                 freq_bought_together_id = each_product_count_desc[1]['product']
                 freq_bought_together = get_object_or_404(Product, pk=freq_bought_together_id)
 
-
-
-
+    """ if orders found for this product hide Admin product delete option in product page """ 
+    product_has_no_orders = True
+    if orders_with_this_product:
+        product_has_no_orders = False
 
     context = {
         'product': product,
         'freq_bought_together': freq_bought_together,
+        'product_has_no_orders': product_has_no_orders,
     }
 
     return render(request, 'products/product_detail.html', context)
