@@ -29,6 +29,9 @@ def update_session(request):
     colour_checked = request.POST.getlist('colour_checked[]')
     colour_checked_num = list(map(int, colour_checked))
 
+    gender_checked = request.POST.getlist('gender_checked[]')
+    gender_checked_num = list(map(int, gender_checked))
+
     print("BRAND VIEW SESSION: ", brand_checked_num)
     if request.is_ajax():      
         try:
@@ -43,6 +46,7 @@ def update_session(request):
             request.session.modified = True
             request.session['colour_checked'] = colour_checked_num
             request.session.modified = True
+            request.session['gender_checked'] = gender_checked_num
         except KeyError:
             print("EXCEPT ERROR")
             return HttpResponse('Error')
@@ -60,12 +64,14 @@ def all_products(request):
     subcategories_list = SubCategory.objects.all()
     brands = Brand.objects.all()
     colours = Colour.objects.all()
+    genders = Product.gender.field.choices
 
     cat_checked = request.session.get('cat_checked', [])
     cat_indeterminate = request.session.get('cat_indeterminate', [])
     sub_checked = request.session.get('sub_checked', [])
     brand_checked = request.session.get('brand_checked', [])
     colour_checked = request.session.get('colour_checked', [])
+    gender_checked = request.session.get('gender_checked', [])
 
     print("BRAND ALL PROD: ", brand_checked)
 
@@ -76,12 +82,16 @@ def all_products(request):
         sub_checked = list(subcategories_list.exclude(category__giftcard_category=True).values_list('id', flat=True))
         brand_checked = list(brands.values_list('id', flat=True))
         colour_checked = list(colours.values_list('id', flat=True))
+        gender_checked_string = list([gender[0] for gender in genders])
+        gender_checked = list(map(int, gender_checked_string))
 
     # """ First get full product list and annotate the sale price of each item """                
-    products = Product.objects.all().exclude(obsolete=True).filter(
-        Q(category__in=cat_checked) | Q(subcategory__in=sub_checked),
-        Q(brand__in=brand_checked)
-    )
+    products = Product.objects.all().exclude(obsolete=True
+        ).exclude(Q(has_gender=True), ~Q(gender__in=gender_checked)
+        ).filter(
+            Q(category__in=cat_checked) | Q(subcategory__in=sub_checked),
+            Q(brand__in=brand_checked)
+        ).annotate(order_count=Count('orderlineitem'))
 
     query = None
     categories = None
@@ -125,6 +135,7 @@ def all_products(request):
         'categories_list': categories_list,
         'brands': brands,
         'colours': colours,
+        'genders': genders,
         'products': products,
         'product_count': product_count,
         'search_term': query,
@@ -135,6 +146,7 @@ def all_products(request):
         'sub_checked': sub_checked,
         'brand_checked': brand_checked,
         'colour_checked': colour_checked,
+        'gender_checked': gender_checked,
     }
 
     return render(request, 'products/products.html', context)

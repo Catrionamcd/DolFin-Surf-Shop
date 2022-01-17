@@ -70,6 +70,20 @@
         </li>
         {% endfor %}
 
+        <li class="nav-item">
+            <a class=" font-weight-bold nav-link text-black mr-5">
+                Gender
+            </a>
+        </li>  
+        {% for gender in genders %}      
+        <li class="nav-item dropdown">       
+            <input class="form-check-input ml-1" type="checkbox" name="main-gender" id="main-gender-{{ gender.0 }}" value="{{ gender.0 }}">
+            <a class="text-black text-nowrap mr-5 ml-4" 
+                id="{{ gender.0 }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ gender.1 }}  
+            </a>
+        </li>
+        {% endfor %}
 
     </ul>
 </div>
@@ -113,6 +127,13 @@
         }
     }
 
+
+    if ("{{ gender_checked }}") {
+        var gender_checked = JSON.parse('{{ gender_checked }}');
+        for (i = 0; i < gender_checked.length; ++i) {
+            document.getElementById("main-gender-"+gender_checked[i]).checked=true;
+        }
+    }
 
     $('input[type="checkbox"]').change(function(e) {
         // Menu checkbox clicked
@@ -165,6 +186,7 @@
         var subChecked = []
         var brandChecked = []
         var colourChecked = []
+        var genderChecked = []
 
         if (menu_clicked[0] == "main") {
             document.querySelectorAll('input[name="main-cat"][type="checkbox"]:checked').forEach(function(element) {
@@ -186,6 +208,10 @@
             document.querySelectorAll('input[name="main-colour"][type="checkbox"]:checked').forEach(function(element) {
                 colourChecked.push(element.getAttribute('value'))
             });
+
+            document.querySelectorAll('input[name="main-gender"][type="checkbox"]:checked').forEach(function(element) {
+                genderChecked.push(element.getAttribute('value'))
+            });
         } else {
             document.querySelectorAll('input[name="mob-cat"][type="checkbox"]:checked').forEach(function(element) {
                 catChecked.push(element.getAttribute('value'))
@@ -206,6 +232,10 @@
             document.querySelectorAll('input[name="mob-colour"][type="checkbox"]:checked').forEach(function(element) {
                 colourChecked.push(element.getAttribute('value'))
             });
+
+            document.querySelectorAll('input[name="mob-gender"][type="checkbox"]:checked').forEach(function(element) {
+                genderChecked.push(element.getAttribute('value'))
+            });
         }
         console.log("BRAND: ", brandChecked)
 
@@ -216,7 +246,7 @@
                 },
             type: "POST",
             data: {cat_checked: catChecked, cat_indeterminate: catIndeterminate, sub_checked: subChecked, 
-                    brand_checked: brandChecked, colour_checked: colourChecked},
+                    brand_checked: brandChecked, colour_checked: colourChecked, gender_checked: genderChecked},
             success: function(response){},
             complete: function(){},
             error: function (xhr, textStatus, thrownError){
