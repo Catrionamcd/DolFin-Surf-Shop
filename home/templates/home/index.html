@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-1">
-                <h4>Shop Now!!</h4>
+                <!-- <h4>Shop Now!!</h4> -->
             </div>
         </div>
         <div class="row mt-3">
@@ -27,10 +27,14 @@
                 </nav>
             </div>
             <div class="product-container col-10">
+                {% if sale_in_progress %}
+                <h2 style="color:red">Sale Now On</h2>
+                {% endif %} 
                 <div class="row mt-2 mb-3"></div>
                 <div class="row">
                     {% for category in categories %}
-                        <div class="col-md-3 mr-3">
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                        <!-- <div class="col-md-3 mr-3"> -->
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <a href="{% url 'products' %}" class="card-link">
