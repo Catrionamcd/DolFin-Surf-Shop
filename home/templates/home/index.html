@@ -38,7 +38,12 @@
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <a href="{% url 'products' %}" class="card-link">
-                                        <p class="card-title mt-2 "><strong>{{ category.name }}</strong></p>
+                                        
+                                        {% if category.sale_percent > 0 %}
+                                            <p style="color:red">{{ category.sale_percent }}% Discount on all {{ category.name }}</p>
+                                        {% else %} 
+                                            <p class="card-title mt-2 "><strong>{{ category.name }}</strong></p>
+                                        {% endif %} 
                                         <div class="image-container mt-3"> 
                                             {% if category.image %}
                                                 <img class="card-img-top img-fluid" src="{{ category.image.url }}" alt="{{ category.name }}">

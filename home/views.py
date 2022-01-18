@@ -15,9 +15,11 @@ def index(request):
     if len(sale_categories)>0:
         sale_in_progress = True
 
+
     context = {
         'categories': categories,
         'sale_in_progress': sale_in_progress,
+        
     }
 
     return render(request, 'home/index.html', context)
