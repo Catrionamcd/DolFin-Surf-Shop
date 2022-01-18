@@ -106,7 +106,6 @@ class Product(models.Model):
     has_colours = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     obsolete = models.BooleanField(default=False, null=True, blank=True)
 
@@ -129,10 +128,15 @@ class ProductInventory(models.Model):
         """
         verbose_name_plural = 'Product Inventory'
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['product', 'product_colour', 'size'], name='product_inventory_constraint')
+        ]
+
     product = models.ForeignKey('Product', null=True, blank=True,
                                 on_delete=models.SET_NULL)
-    colour = models.ForeignKey('Colour', null=True, blank=True,
-                               on_delete=models.SET_NULL)
+    product_colour = models.ForeignKey('ProductColour', null=True, blank=True,
+                                on_delete=models.SET_NULL)
 
     XTRASMALL = 'XS'
     SMALL = 'S'
@@ -153,10 +157,28 @@ class ProductInventory(models.Model):
         choices=SIZE_CHOICES,
     )
 
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=0)
 
     def __str__(self):
-        return f'Product: {self.product}, Colour: {self.colour}, \
-            Size: {self.size}, Quantity: {self.quantity}'
+        return f'Product: {self.product}, Colour: {self.product_colour.colour}, \
+                    Size: {self.size}, Quantity: {self.quantity}'
+
+
+class ProductColour(models.Model):
+    """
+        The Product Colour Model will hold the different Product/Colour varieties for sale
+    """
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['product', 'colour'], name='product_colour_constraint')
+        ]
+
+    product = models.ForeignKey('Product', null=True, blank=True,
+                                on_delete=models.SET_NULL)
+    colour = models.ForeignKey('Colour', null=True, blank=True,
+                               on_delete=models.SET_NULL)
+    image = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return f'Product: {self.product}, Colour: {self.colour}'

@@ -201,11 +201,11 @@ input[name='q']::placeholder {
     object-fit: cover;
 } */
 
-.a:visited {
+/* .a:visited {
   color: gray;
   background-color: transparent;
   text-decoration: none;
-}
+} */
 
 
 /* -------------------------------- Media Queries */
