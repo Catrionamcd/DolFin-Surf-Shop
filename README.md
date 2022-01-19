@@ -12,7 +12,14 @@ When designing the look and feel of the site I looked at
 
 ![](assets/images/.png)
 
+### Colours
 
+The colours were chosen along with the images to convey a cool breezy beach vibe. (List colours)
+
+The predominant colour is cool blue: #a9f6fc for the background. Font colours is muted grey with black for the heading.
+
+### Typography
+The fonts selected were: Lato for simplicity.
 ### Data Models
 
 ![Data Model](assets/images/.png)
@@ -122,6 +129,7 @@ on the site"
 * [Facebook](http://facebook.com) - used to create a facebook page for the site.
 * [Mailchimp](https://mailchimp.com) - used for the newsletter.
 * [PicResize](https://picresize.com) - used to resize images for better performance when rendering the images.
+* [Techsini](https://techsini.com/multi-mockup/) - used for the multi device site mockups
 
 ## Testing
 ### Manual Testing

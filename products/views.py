@@ -132,7 +132,7 @@ def all_products(request):
     current_sorting = f'{sort}_{direction}'
 
     product_count = products.count()
-    paginator = Paginator(products, 10)
+    paginator = Paginator(products, 30)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

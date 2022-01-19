@@ -131,12 +131,12 @@
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 {% if products.has_previous %}
-                <li><a href="?page=1" class="page-link">&laquo; first </a></li>
-                <li><a href="?page={{ products.previous_page_number }}" class="page-link">&laquo; previous </a></li>
+                <li><a href="?page=1" class="page-link text-black">&laquo; first </a></li>
+                <li><a href="?page={{ products.previous_page_number }}" class="page-link text-black">&laquo; previous </a></li>
                 {% endif %}
                 {% if products.has_next %}
-                <li><a href="?page={{ products.next_page_number }}" class="page-link"> next &raquo;</a></li>
-                <li><a href="?page={{ page_obj.paginator.num_pages }}" class="page-link"> last &raquo;</a></li>
+                <li><a href="?page={{ products.next_page_number }}" class="page-link text-black"> next &raquo;</a></li>
+                <li><a href="?page={{ page_obj.paginator.num_pages }}" class="page-link text-black"> last &raquo;</a></li>
                 {% endif %}
             </ul>
         </nav>
