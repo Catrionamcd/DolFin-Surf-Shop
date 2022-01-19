@@ -39,15 +39,15 @@ def update_session(request):
         try:
             print("IN TRY")
             request.session['cat_checked'] = cat_checked_num
-            request.session.modified = True
+            # request.session.modified = True
             request.session['cat_indeterminate'] = cat_indeterminate_num
-            request.session.modified = True
+            # request.session.modified = True
             request.session['sub_checked'] = sub_checked_num
-            request.session.modified = True
+            # request.session.modified = True
             request.session['brand_checked'] = brand_checked_num
-            request.session.modified = True
+            # request.session.modified = True
             request.session['colour_checked'] = colour_checked_num
-            request.session.modified = True
+            # request.session.modified = True
             request.session['gender_checked'] = gender_checked_num
         except KeyError:
             print("EXCEPT ERROR")
