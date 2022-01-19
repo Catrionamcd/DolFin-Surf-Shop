@@ -18,6 +18,7 @@ def update_session(request):
 
     cat_checked = request.POST.getlist('cat_checked[]')
     cat_checked_num = list(map(int, cat_checked))
+    print("CAT CHECKED NUM: ", cat_checked_num)
 
     cat_indeterminate = request.POST.getlist('cat_indeterminate[]')
     cat_indeterminate_num = list(map(int, cat_indeterminate))
@@ -34,21 +35,18 @@ def update_session(request):
     gender_checked = request.POST.getlist('gender_checked[]')
     gender_checked_num = list(map(int, gender_checked))
 
-    print("BRAND VIEW SESSION: ", brand_checked_num)
+    # print("BRAND VIEW SESSION: ", brand_checked_num)
     if request.is_ajax():      
         try:
             print("IN TRY")
             request.session['cat_checked'] = cat_checked_num
-            # request.session.modified = True
             request.session['cat_indeterminate'] = cat_indeterminate_num
-            # request.session.modified = True
             request.session['sub_checked'] = sub_checked_num
-            # request.session.modified = True
             request.session['brand_checked'] = brand_checked_num
-            # request.session.modified = True
             request.session['colour_checked'] = colour_checked_num
-            # request.session.modified = True
             request.session['gender_checked'] = gender_checked_num
+
+            print("READ AFTER SAVE:", request.session.get('cat_checked', []))
         except KeyError:
             print("EXCEPT ERROR")
             return HttpResponse('Error')
@@ -75,7 +73,7 @@ def all_products(request):
     colour_checked = request.session.get('colour_checked', [])
     gender_checked = request.session.get('gender_checked', [])
 
-    print("BRAND ALL PROD: ", brand_checked)
+    print("CAT START OF VIEW: ", cat_checked)
 
     # if NO categories, sub-categories, brands, or colours retrieved from session
     if cat_checked == [] and sub_checked == [] and brand_checked == [] and colour_checked == []:
