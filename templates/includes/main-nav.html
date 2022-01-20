@@ -248,15 +248,15 @@
             data: {cat_checked: catChecked, cat_indeterminate: catIndeterminate, sub_checked: subChecked, 
                     brand_checked: brandChecked, colour_checked: colourChecked, gender_checked: genderChecked},
             success: function(response){},
-            complete: function(){alert(response)},
+            complete: function(){},
             error: function (xhr, textStatus, thrownError){
                 alert("Error in ajax post");
             }
         });
 
         sleep(5);
-        // window.location.href = "";
-        location.reload();  
+
+        window.location.replace("/products/") 
 
         function sleep(miliseconds) {
             var currentTime = new Date().getTime();
