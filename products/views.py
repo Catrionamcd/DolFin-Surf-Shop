@@ -76,7 +76,7 @@ def all_products(request):
     print("CAT START OF VIEW: ", cat_checked)
 
     # if NO categories, sub-categories, brands, or colours retrieved from session
-    if cat_checked == [] and sub_checked == [] and brand_checked == [] and colour_checked == []:
+    if cat_checked == [] and sub_checked == [] and brand_checked == [] and colour_checked == [] and gender_checked == []:
         # then select all categories, sub-categories, brands and colours for view (except gift cards)
         cat_checked = list(categories_list.exclude(giftcard_category=True).values_list('id', flat=True))
         sub_checked = list(subcategories_list.exclude(category__giftcard_category=True).values_list('id', flat=True))

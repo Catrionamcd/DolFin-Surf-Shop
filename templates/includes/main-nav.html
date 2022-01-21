@@ -1,4 +1,4 @@
-<div class="list-unstyled" id="main-nav">
+<div class="list-unstyled menu-font" id="main-nav">
     <ul class="navbar-nav list-unstyled components">
         <li class="nav-item">
             <a class="logo-font font-weight-bold nav-link mr-5" href="{% url 'home' %}" id="home-link">
@@ -15,14 +15,14 @@
         <li class="nav-item dropdown">       
             
             <input class="form-check-input ml-1 main-nav-checkbox" type="checkbox" name="main-cat" id="main-cat-{{ category_item.id }}" value="{{ category_item.id }}">
-            <a class="text-nowrap  ml-4 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
+            <a class="text-nowrap ml-4 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
                 id="{{ category_item.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ category_item.name }}  
             </a>
             
             {% if category_item.subcat_count > 0 %}
             
-            <div class="dropdown-menu border-0 mt-0 pt-0 mb-0 pb-0" aria-labelledby="homeware-link">
+            <div class="dropdown-menu bg-dropdown-blue border-0 mt-0 pt-0 mb-0 pb-0" aria-labelledby="homeware-link">
             
                 {% for subcategory_item in category_item.subcategory_set.all %}
                 

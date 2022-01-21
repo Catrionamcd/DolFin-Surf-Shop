@@ -43,16 +43,12 @@
     <header class="container-fluid fixed-top">
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                <!-- <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="my-0 text-black">
-                        <img src="{{ MEDIA_URL }}dolfin-logo1.png" style="height:65px"alt="Image of Logo">
-                    </h2>
-                </a> -->
 
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h2 class="my-0 text-black">
-                        <img src="{{ MEDIA_URL }}dolfin-logo.png" style="height:65px"alt="Image of Logo">
-                        <strong>DolFin</strong> Surf Shop</h2>
+                        <img class="logo-height" src="{{ MEDIA_URL }}dolfin-logo.png" alt="Image of Logo">
+                        <strong >DolFin</strong><span class="company-name"> Surf Shop</span>
+                    </h2>
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
