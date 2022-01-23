@@ -5,6 +5,12 @@ This is a confirmation of your order at DolFin Surf Shop. Your order information
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
+{% for item in order_items %}  
+    {{ forloop.counter }}. {{ item.product.name }} x {{ item.quantity }}
+{% if item.product.category.giftcard_category %} {% for giftcard in giftcards|giftcards_in_order_line:item %}
+        - {{ giftcard.giftcard_code }}
+{% endfor %} {% endif %} {% endfor %}
+
 Order Total: €{{ order.order_total }}
 Delivery: €{{ order.delivery_cost }}
 Grand Total: €{{ order.grand_total }}

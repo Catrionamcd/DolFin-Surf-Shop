@@ -94,7 +94,7 @@ def all_products(request):
         ).exclude(Q(has_gender=True), ~Q(gender__in=gender_checked)
         ).filter(
             Q(category__in=cat_checked) | Q(subcategory__in=sub_checked),
-            Q(brand__in=brand_checked)
+            Q(brand__in=brand_checked) | Q(category__giftcard_category=True)
         ).annotate(order_count=Count('orderlineitem'))
 
     query = None
@@ -168,7 +168,7 @@ def product_detail(request, product_id):
     """ First get a list of all Orders that include this selected Product """
     orders_with_this_product = OrderLineItem.objects.filter(product=product_id).values_list('order',flat=True)
     """ Next get a list of Product Items ordered in all of the Orders retrieved above BUT not giftcards """
-    all_products_in_these_orders = OrderLineItem.objects.filter(order__in=orders_with_this_product).exclude(product__obsolete=True)
+    all_products_in_these_orders = OrderLineItem.objects.filter(order__in=orders_with_this_product).exclude(product__category__giftcard_category=True).exclude(product__obsolete=True)
     """ Now Count how many times each product was ordered across all of these Orders """
     each_product_count = all_products_in_these_orders.values('product').order_by('product').annotate(num_ordered=Count('product'))
     """ Finally sequence from largest to smallest count """

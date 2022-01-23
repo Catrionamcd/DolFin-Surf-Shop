@@ -94,7 +94,12 @@ TEMPLATES = [
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
-            ]
+            ],
+
+            'libraries':{
+                'checkout_filters': 'checkout.checkout_filters',
+            },
+
         },
     },
 ]
@@ -141,6 +146,10 @@ else:
         }
     }
 
+
+# DATABASES = {
+#     'default': dj_database_url.parse('postgres://jnuczxffmjdxaa:c5b67e67546a658360193011e3dcb8963b10a2b722056b6203c18841176fef7e@ec2-52-49-68-244.eu-west-1.compute.amazonaws.com:5432/d7hkittjpr59i0')
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

@@ -83,6 +83,16 @@ class OrderLineItem(models.Model):
             self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
+        """ Now check if a Gift Card item purchase and create a Giftcard entry """
+        if self.product.category.giftcard_category:
+            for i in range(self.quantity):
+                gift_card = GiftCard(
+                    giftcard_value = self.product.price,
+                    giftcard_value_remaining = self.product.price,
+                    order_line_item = self,
+                )
+                gift_card.save()
+
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
 
