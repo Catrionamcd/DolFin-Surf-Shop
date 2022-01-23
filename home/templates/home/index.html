@@ -37,7 +37,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-body">
-                                    <a href="{% url 'products' %}" class="card-link">
+                                    <a href="{% url 'products' %}?category_filter={{ category.id }}" class="card-link">
                                         
                                         {% if category.sale_percent > 0 %}
                                             <p class="text-danger mt-2"><strong>{{ category.sale_percent }}% Discount on all {{ category.name }}</strong></p>

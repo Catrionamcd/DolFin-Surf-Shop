@@ -91,8 +91,6 @@
 <script type="text/javascript">
 
     if ("{{ cat_checked }}") {
-        console.log("CAT ON")
-        console.log("{{ cat_checked }}")
         var cat_checked = JSON.parse('{{ cat_checked }}');
         for (i = 0; i < cat_checked.length; ++i) {
             document.getElementById("main-cat-"+cat_checked[i]).checked=true;
@@ -138,7 +136,6 @@
     $('input[type="checkbox"]').change(function(e) {
         // Menu checkbox clicked
         // First traverse the menu and update parent/child checkboxes based on the Clicked checkbox
-        console.log("CLICKED")
         var checked = $(this).prop("checked"),
             container = $(this).parent(),
             siblings = container.siblings();
@@ -237,7 +234,6 @@
                 genderChecked.push(element.getAttribute('value'))
             });
         }
-        console.log("JAVA CAT: ", catChecked)
 
         $.post({
             url: "{% url 'update_session' %}",

@@ -84,15 +84,34 @@ on the site"
 
 ## Existing Features
 
-### Registration/Login Forms
-* I created a new layout to the registration of a user to the site. I also created a new layout to the forms for the login and logout screens.
 
 ### Navigation Bar
+Logo
+
+![alt text](assets/documentation/Logo-Screen.png)
+
+The Logo links back to the home page.
+
+![alt text](assets/documentation/Dolfin-Nav-Bar.png)
+
+If the user is not signed in the Sign in and Register links are visible in the navbar. If the user is signed in the Sign In and Register links are replaced by a Sign Out link and thelink is visible:
+ Navigation for not signed in user
+
+ Navigation for signed in user
+
+The active page is highlighted for good UX:
+ My Recipes page highlighted
+
+The navbar sticks to the top of the page so remains in view for the user to easily navigate around the site
+
+
+
 
 ![alt text](assets/images/.png)
 
 * The navigation bar is located at the top of all pages on the site.
 * The options available dynamically change depending on the type of viewer and depending on the specific menu path chosen.
+### Registration/Login Forms
 
 ### Home button
 

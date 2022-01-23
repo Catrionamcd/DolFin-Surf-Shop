@@ -18,7 +18,6 @@ def update_session(request):
 
     cat_checked = request.POST.getlist('cat_checked[]')
     cat_checked_num = list(map(int, cat_checked))
-    print("CAT CHECKED NUM: ", cat_checked_num)
 
     cat_indeterminate = request.POST.getlist('cat_indeterminate[]')
     cat_indeterminate_num = list(map(int, cat_indeterminate))
@@ -35,23 +34,17 @@ def update_session(request):
     gender_checked = request.POST.getlist('gender_checked[]')
     gender_checked_num = list(map(int, gender_checked))
 
-    # print("BRAND VIEW SESSION: ", brand_checked_num)
     if request.is_ajax():      
         try:
-            print("IN TRY")
             request.session['cat_checked'] = cat_checked_num
             request.session['cat_indeterminate'] = cat_indeterminate_num
             request.session['sub_checked'] = sub_checked_num
             request.session['brand_checked'] = brand_checked_num
             request.session['colour_checked'] = colour_checked_num
             request.session['gender_checked'] = gender_checked_num
-
-            print("READ AFTER SAVE:", request.session.get('cat_checked', []))
         except KeyError:
-            print("EXCEPT ERROR")
             return HttpResponse('Error')
     else:
-        print("ELSE ERROR")
         raise Http404
     
     return HttpResponse("Success")
@@ -73,7 +66,25 @@ def all_products(request):
     colour_checked = request.session.get('colour_checked', [])
     gender_checked = request.session.get('gender_checked', [])
 
-    print("CAT START OF VIEW: ", cat_checked)
+    category_filter = None
+    if request.GET:
+        if 'category_filter' in request.GET:
+            """ if category selected from Home Page """
+            category_filter = request.GET['category_filter']
+            if not category_filter in cat_checked:
+                """ Update menu Checkbox with selected category"""
+                cat_checked.append(category_filter)
+                cat_checked = list(map(int, cat_checked))
+                request.session['cat_checked'] = cat_checked
+                """ Check if Category has sub-categories """
+                subcats = SubCategory.objects.filter(category=category_filter)
+                for subcat in subcats:
+                    if not subcat.id in sub_checked:
+                        """ update menu checkbox with sub-categories """
+                        sub_checked.append(subcat.id)
+                sub_checked = list(map(int, sub_checked))
+                request.session['sub_checked'] = sub_checked
+
 
     # if NO categories, sub-categories, brands, or colours retrieved from session
     if cat_checked == [] and sub_checked == [] and brand_checked == [] and colour_checked == [] and gender_checked == []:
@@ -173,8 +184,7 @@ def product_detail(request, product_id):
     each_product_count_desc = each_product_count.all().order_by('-num_ordered')
 
     freq_bought_together = ""
-    # print(product_id)
-    # print(product)
+
     """ First check if any additional products in the list. Current product plus at least one other """
     """ Only interested in highest count so take from start of list """
     if len(each_product_count_desc) > 1:

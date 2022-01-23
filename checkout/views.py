@@ -17,7 +17,6 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
-    print('CACHE BEING CALLED')
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
