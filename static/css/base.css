@@ -5,7 +5,7 @@ html {
 body {
     background: #a9f6fc;
     background-size: cover;
-    /* height: calc(100vh - 164px); */
+    height: calc(100vh - 164px);
     color: #555;
     font-family: 'Lato';
 }
@@ -15,11 +15,22 @@ body {
 }
 
 .logo-height {
-    height : 65px;
+    height : 60px;
 }
 
-.shop-name {}
+/* Image Size */
 
+.fit-image {
+    width: 100%;
+    /* object-fit: cover; */
+    max-height: 500px; /* only if you want fixed height */
+}
+
+.fit-detail-image {
+    width: 100%;
+    /* object-fit: cover; */
+    max-height: 300px; /* only if you want fixed height */
+}
 
 /* from Bulma */
 .icon {
@@ -276,6 +287,12 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
+/* Mailchimp */
+
+#mc_embed_signup form {
+    padding : 0;
+}
+
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
@@ -288,7 +305,7 @@ input[name='q']::placeholder {
     }
 
     .header-container {
-        padding-top: 100px;
+        padding-top: 95px;
     }
 
 }
@@ -305,15 +322,19 @@ input[name='q']::placeholder {
 
     .menu-font {
         font-size: .75rem;
-        margin-left : 0;
+        margin-left: 0;
     } 
+
+    .header-container {
+        padding-top: 85px;
+    }
 }
 
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 80px;
+        padding-top: 65px;
     }
 
     body {

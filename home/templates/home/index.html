@@ -12,10 +12,12 @@
 {% block content %}
     <div class="overlay"></div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col text-center mt-1">
-            </div>
+        <div id="delivery-banner" class="row text-center mt-1">
+            <div class="col bg-black text-white">
+                <h4>Click a category to shop. Free delivery on orders over €{{ free_delivery_threshold }}!</h4>                
+            </div>            
         </div>
+
         <div class="row mt-3">
             <div class="col-2" id="sidebar">
                 <nav class="col-2 navbar d-none d-md-block navbar-default navbar-light w-100 h-100">
@@ -25,15 +27,14 @@
                     {% include 'includes/main-nav.html' %}
                 </nav>
             </div>
+           
             <div class="product-container col-sm-12 col-md-10">
                 {% if sale_in_progress %}
-                <h2 class="text-danger">Sale Now On</h2>
+                    <h3><strong class="text-danger">Sale Now On!!</strong></h3>
                 {% endif %} 
-                <div class="row mt-2 mb-3"></div>
-                <div class="row">
+                <div class="row mt-2 mb-3">
                     {% for category in categories %}
                         <div class="col-sm-6 col-md-6 col-lg-4">
-                        <!-- <div class="col-md-3 mr-3"> -->
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <a href="{% url 'products' %}" class="card-link">
