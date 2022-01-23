@@ -56,22 +56,6 @@
 
         <li class="nav-item">
             <a class=" font-weight-bold nav-link text-black mr-5">
-                Colour
-            </a>
-        </li>  
-        {% for colour in colours %}      
-        <li class="nav-item dropdown">       
-            
-            <input class="text-black text-nowrap form-check-input ml-1" type="checkbox" name="mob-colour" id="mob-colour-{{ colour.id }}" value="{{ colour.id }}">
-            <a class="text-black text-nowrap mr-5 ml-4" 
-                id="{{ colour.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ colour.colour }}  
-            </a>
-        </li>
-        {% endfor %}
-
-        <li class="nav-item">
-            <a class=" font-weight-bold nav-link text-black mr-5">
                 Gender
             </a>
         </li>  
@@ -115,13 +99,6 @@
         var brand_checked = JSON.parse('{{ brand_checked }}');
         for (i = 0; i < brand_checked.length; ++i) {
             document.getElementById("mob-brand-"+brand_checked[i]).checked=true;
-        }
-    }
-
-    if ("{{ colour_checked }}") {
-        var colour_checked = JSON.parse('{{ colour_checked }}');
-        for (i = 0; i < colour_checked.length; ++i) {
-            document.getElementById("mob-colour-"+colour_checked[i]).checked=true;
         }
     }
 

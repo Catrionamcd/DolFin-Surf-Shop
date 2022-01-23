@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from products.models import Category, Brand, Colour, Product
+from products.models import Category, Brand, Product
 from django.db.models import Count
 
 # View to render the index page.
@@ -11,7 +11,6 @@ def index(request):
     categories = Category.objects.all().order_by('giftcard_category')
     categories_list = Category.objects.all().annotate(subcat_count=Count('subcategory'))
     brands = Brand.objects.all()
-    colours = Colour.objects.all()
     genders = Product.gender.field.choices
 
     """ On home page so update menu to turn off all category/sub-category checkboxes and turn on all others """
@@ -19,7 +18,6 @@ def index(request):
     cat_indeterminate = []
     sub_checked = []
     brand_checked = list(brands.values_list('id', flat=True))
-    colour_checked = list(colours.values_list('id', flat=True))   
     gender_checked_string = list([gender[0] for gender in genders])
     gender_checked = list(map(int, gender_checked_string))
     
@@ -28,7 +26,6 @@ def index(request):
     request.session['cat_indeterminate'] = cat_indeterminate
     request.session['sub_checked'] = sub_checked
     request.session['brand_checked'] = brand_checked
-    request.session['colour_checked'] = colour_checked
     request.session['gender_checked'] = gender_checked
 
     """ Check if any Sales in place """
@@ -43,13 +40,11 @@ def index(request):
         'sale_in_progress': sale_in_progress,
         'categories_list': categories_list,
         'brands': brands,
-        'colours': colours,
         'genders': genders,
         'cat_checked': cat_checked,
         'cat_indeterminate': cat_indeterminate,
         'sub_checked': sub_checked,
         'brand_checked': brand_checked,
-        'colour_checked': colour_checked,
         'gender_checked': gender_checked,
     }
 
