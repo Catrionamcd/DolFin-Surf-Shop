@@ -2,9 +2,11 @@
 
 The DolFin Surf Shop is an E-Commerce shopping site. The site sells surf equipment and accessories. It is targeted at experience surfers and shoppers new to the surfing world.
 
-## Multi Screen of the site
-Dolfin-Surf Shop - https://
-![DolFin-Surf](assets/images/.png)
+## Multi Device Screens of the site
+
+![DolFin-Surf](assets/documentation/Dolfin-Multi-Device.png)
+
+[DolFin Surf Shop](https://dolfin-surf-shop.herokuapp.com/)
 
 ## Design of the site
 ### Wireframes
