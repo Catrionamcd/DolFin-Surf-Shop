@@ -94,10 +94,35 @@
                                                 <small class="ml-3">
                                                     <a href="{% url 'edit_product' product.id %}">Edit</a> 
                                                     {% if product.order_count == 0 %}|  
-                                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                    <button type="button" class="text-danger" style="background: none!important; border: none; padding: 0!important;" 
+                                                        data-toggle="modal" data-target="#confirmManageDelete{{ forloop.counter }}">Delete</button>
                                                     {% endif %}
                                                 </small>
-                                            {% endif %}     
+                                            {% endif %}
+                                            
+                                            <!-- Modal for Delete Button above-->
+                                            <div class="modal fade" id="confirmManageDelete{{ forloop.counter }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content ">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Product Deletion</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            This action will permanently delete {{ product.name }}
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <form action="{% url 'delete_product' product.id %}" method="post">
+                                                            <button type="submit" class="btn btn-primary">Confirm Deletion</button>
+                                                            {% csrf_token %}
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -123,6 +148,12 @@
                                 <hr>
                             </div>
                         {% endif %}
+
+
+
+
+
+
                     {% endfor %}
                 </div>
             </div>
