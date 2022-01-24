@@ -1,0 +1,4 @@
+User_agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Sitemap: https://dolfin-surf-shop.herokuapp.com/sitemap.xml

@@ -9,10 +9,30 @@ The DolFin Surf Shop is an E-Commerce shopping site. The site sells surf equipme
 [DolFin Surf Shop](https://dolfin-surf-shop.herokuapp.com/)
 
 ## Design of the site
-### Wireframes
-When designing the look and feel of the site I looked at 
 
-![](assets/images/.png)
+## Agile
+Github was used to plan the project with Agile methodology.
+Projects were used to divide the project into three iterations with a simple Kanban board.
+1.	Milestones were used to create Epics.
+2.	Issues were used to create User Stories with a custom template. Each user story is clearly described with a title, statement and acceptance criteria.
+3.	The acceptance criteria used were Must Have, Should Have, Could Have.
+4.	Some milestones were also created with an end date to be used as iterations or sprints. 
+Each user story was linked to an Epic(Milestone). The user stories were labelled with the acceptance criteria in order to prioritise the work. As work on a user story was begun the story was moved from the 'to do' column on a kanban board to an 'In progress' column. As a user story was moved it was updated with a new milestone that represented an iteration or a sprint.  When work on the story was complete the user story was moved into the 'done' column.
+However, I found that as I worked on the project the deadline that I set myself in the sprint or iteration were unrealistic so I abandoned using the milestones for this purpose. It was also difficult given the tight time frame to accurately plan out the amount of work involved in each task or user story in advance. As a result of this some user stories were updated during the course of implementation. Unfortunately, I was unable to complete all of the user stories. These user stories could be incorporated into the future features of the site.
+
+### Wireframes
+When designing the look and feel of the site I looked at the Amazon website and numerous live Surf Shop sites.
+#### Homepage
+![](assets/documentation/Desktop-Home-Screen.png)
+![](assets/documentation/Mobile-Home-Screen.png)
+
+#### Products page
+![](assets/documentation/Desktop-Products-Screen.png)
+![](assets/documentation/Mobile-Products-Screen.png)
+
+### Product Detail page
+![](assets/documentation/Desktop-Product-Detail-Screen.png)
+![](assets/documentation/Mobile-Product-Detail-Screen.png)
 
 ### Colours
 
@@ -20,8 +40,7 @@ The colours were chosen along with the images to convey a cool breezy beach vibe
 
 The predominant colour is cool blue: #a9f6fc for the background. Font colours is muted grey with black for the heading.
 
-### Typography
-The fonts selected were: Lato for simplicity.
+The font Lato as selected for simplicity.
 ### Data Models
 
 ![Data Model](assets/images/.png)
