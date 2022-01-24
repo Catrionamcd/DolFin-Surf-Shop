@@ -12,21 +12,23 @@ The DolFin Surf Shop is an E-Commerce shopping site. The site sells surf equipme
 
 ## Agile
 Github was used to plan the project with Agile methodology.
-Projects were used to divide the project into three iterations with a simple Kanban board.
+
 1.	Milestones were used to create Epics.
 2.	Issues were used to create User Stories with a custom template. Each user story is clearly described with a title, statement and acceptance criteria.
-3.	The acceptance criteria used were Must Have, Should Have, Could Have.
+3.	Labels were used for the acceptance criteria, which were 'Must Have', 'Should Have', 'Could Have'.
 4.	Some milestones were also created with an end date to be used as iterations or sprints. 
+5.  A Simple Kanban board was used to map the progress of the project.
+
 Each user story was linked to an Epic(Milestone). The user stories were labelled with the acceptance criteria in order to prioritise the work. As work on a user story was begun the story was moved from the 'to do' column on a kanban board to an 'In progress' column. As a user story was moved it was updated with a new milestone that represented an iteration or a sprint.  When work on the story was complete the user story was moved into the 'done' column.
 However, I found that as I worked on the project the deadline that I set myself in the sprint or iteration were unrealistic so I abandoned using the milestones for this purpose. It was also difficult given the tight time frame to accurately plan out the amount of work involved in each task or user story in advance. As a result of this some user stories were updated during the course of implementation. Unfortunately, I was unable to complete all of the user stories. These user stories could be incorporated into the future features of the site.
 
 ### Wireframes
 When designing the look and feel of the site I looked at the Amazon website and numerous live Surf Shop sites.
-#### Homepage
+### Homepage
 ![](assets/documentation/Desktop-Home-Screen.png)
 ![](assets/documentation/Mobile-Home-Screen.png)
 
-#### Products page
+### Products page
 ![](assets/documentation/Desktop-Products-Screen.png)
 ![](assets/documentation/Mobile-Products-Screen.png)
 
@@ -36,94 +38,80 @@ When designing the look and feel of the site I looked at the Amazon website and 
 
 ### Colours
 
-The colours were chosen along with the images to convey a cool breezy beach vibe. (List colours)
+The colours were chosen along with the images to convey a cool breezy beach vibe. 
 
 The predominant colour is cool blue: #a9f6fc for the background. Font colours is muted grey with black for the heading.
 
 The font Lato as selected for simplicity.
+
 ### Data Models
 
 ![Data Model](assets/images/.png)
 ## User Stories
+### Epic - Registration and User Accounts	
+1.	Site User -	Allow the site visitor to register on the site and have a personal profile. 
+2.	Site User -	Easily login or logout of the site.
+3.	Site User - Easily recover their password if needs be.
+4.	Site User -	Receive an email confirmation after registering	to verify their account registration was successful.
+5.	Site User - Have a personalized user profile to view their profile and order history. 
+6.	Site User - Facility to review a product purchased to inform other shoppers of my views on the product.
 
 ### Epic - View and Navigation	
-1.	Shopper	View all products 	See all products that are available on the site.
-2.	Shopper	View an individual product details	"Look at the product in more detail, get a more detailed description,
-product size, colour, weight or dimensions depending on the product."
-3.	Shopper	"View commonly purchased product or products
-with the product on view"	"See other product or products that were bought along with the 
-product that I am currently viewing"
-4.	Shopper	View running total of items and total cost in shopping bag	"Make an informed decision on my purchases as I
-continue to shop on the site."
-### Epic - Registration and User Accounts	
-5.	Site User	Allow the site visitor to register on the site	"Have a personal account to be able to view my
-profile"
-6.	Site User	Easily login or logout	Access my personal account information
-7.	Site User	Easily recover my password in case I forget it 	Recover access to my account
-8.	Site User	Receive an email confirmation after registering	Verify my account registration was successful
-9.	Site User	Have a personalized user profile	View my personal order history and order confirmations.
-10.	Site User	Facility to review a product purchased	Inform other shoppers of my views on the product
+
+7.	Shopper - View all products that are available on the site.
+8.	Shopper - View an individual product details, get a more detailed description, product size, colour depending on the type of product.
+8.	Shopper	- View commonly purchased product or products with the product on view. See other product or products that were bought along with the product thatthe shopper is currently viewing.
+10.	Shopper - View running total of items and total cost in shopping bag. 
+
 ### Epic - Filter,  Sort and Search	
-11.	Shopper	"Functionality to filter on products such as categories
-or brands"	Easily identify the product that I wish to view in detail
-12.	Shopper	Sort products by price, rating or new stock	Find the best-priced, best rated or newest products
-13.	Shopper	Sort for a specific category	"Find the best-priced, best rated newest products
-for a specific category"
-14.	Shopper	Search for a product by name or description	Find a specific product I'd like to purchase
-15.	Shopper	"Easily see what I've searched for and the number of
-results"	Quickly decide if the product I want is available on the site.
+11.	Shopper	- Functionality to filter on products such as categories or brands to easily identify the product that I wish to view in detail.
+12.	Shopper	- Sort products by price, A-Z product name.	
+13.	Shopper	- Sort for a specific category.
+14.	Shopper	- Search for a product by name or description within a category chosen from the menu.
+15.	Shopper	- Easily see what I've searched for and the number of results.
+
 ### Epic - Purchasing and Checkout	
-16.	Shopper	"Easily select the size, quantity, colour
-or the dimensions of a product"	"Ensure I don't accidentally select the wrong product
-quantity, size, colour, dimensions, weight."
-17.	Shopper	Easily see if stock is available for product selected	Only purchase a product chosen if stock is on hand.
-18.	Shopper	Purchase a gift card for a particular value	"Buy a gift for a friend who can then purchase
-products on the site."
-	Shopper	Use part of the value of a gift card to purchase a product	"Can have a remaining balance on my gift card
-for future use"
-19.	Shopper	Use the value of a gift card	Purchase a product using the value of this gift card
-20.	Shopper	View items in my bag to be purchased	"Identify the total cost of my purchase and all items  I
-will recieve"
-21.	Shopper	Adjust the quantity of individual items in my bag	"Easily make changes to my purchases before
-checkout"
-22.	Shopper	Easily enter my payment information	Put my payment through quickly without any problems
-23.	Shopper	View an order confirmation after checkout	Verify that I haven't made any mistakes
-24.	Shopper	Receive an email confirmation after checking out	"Keep the confirmation of what I have purchased for 
-my records"
-25.	Shopper	Receive an email that my order was dispatched	Kept informed of the progress of my order
+16.	Shopper	- Easily select the quantity and size.
+17.	Shopper	- Purchase a gift card for a particular value to buy a gift for a friend.
+18.	Shopper	- View items in my bag to be purchased to identify the total cost of their purchase.
+19.	Shopper	- Adjust the quantity of individual items in my bag.
+20.	Shopper	- Easily enter my payment information. 
+21.	Shopper	- View an order confirmation after checkout.
+22.	Shopper	- Receive an email confirmation after checking out to have the confirmation of what they have purchased.
+
 ### Epic - Admin and Shop Management	
-26.	Site Owner	Add a product	Add new products to the site
-27.	Site Owner	Edit\Update a product	"Change product prices, description, images and 
-other product changes"
-28.	Site Owner	Delete a product	Remove items that are no longer for sale
-29.	Site Owner	Update the quantity available of products	Manage inventory of stock
-30.	Site Owner	Ability to make a product obsolete	"Show that a product is no longer available
-on the site"
-31.	Site Owner	Ability to add a discount to a particular category of products	Offer my customers offers on products 
-32.	Site Owner	Ability to dispatch an order	Inform my customers that their purchase is on its way to them
+23.	Site Owner - Add a product to the site.
+24.	Site Owner - Edit\Update a product, change product prices, description, images etc.
+25.	Site Owner - Delete a product that has no orders attached.
+26.	Site Owner - Ability to make a product obsolete so that is no longer available for sale on the site.
+27.	Site Owner - Ability to add a discount to a particular category of products	to offer sale discount to the customers.
+
 ## Features/Functions
 
 ## Existing Features
 
-
+## Future Features
+Use of gift voucher for payment
+Dispatch
+Product Inventory 
 ### Navigation Bar
 Logo
 
-![alt text](assets/documentation/Logo-Screen.png)
+![Logo](assets/documentation/Logo-Screen.png)
 
 The Logo links back to the home page.
 
+Navigation Bar
+
 ![alt text](assets/documentation/Dolfin-Nav-Bar.png)
 
-If the user is not signed in the Sign in and Register links are visible in the navbar. If the user is signed in the Sign In and Register links are replaced by a Sign Out link and thelink is visible:
- Navigation for not signed in user
+If the user is not signed in the Login/Register links are visible in the navbar. If the user is signed the user name is displayed on the navigation bar next to the shopping basket.
 
- Navigation for signed in user
+![alt text](assets/documentation/Dolfin-Admin-Login.png)
 
-The active page is highlighted for good UX:
- My Recipes page highlighted
+This dropdown menu will include an Product Management option.
 
-The navbar sticks to the top of the page so remains in view for the user to easily navigate around the site
+The navbar sticks to the top of the page so remains in view for the user to easily navigate around the site.
 
 
 

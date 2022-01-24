@@ -159,10 +159,6 @@ class ProductInventory(models.Model):
 
     quantity = models.IntegerField(null=False, blank=False, default=0)
 
-    # def __str__(self):
-    #     return f'Product: {self.product}, Colour: {self.product_colour.colour}, \
-    #                 Size: {self.size}, Quantity: {self.quantity}'
-
     def __str__(self):
         return f'Product: {self.product}, Colour: {self.product_colour}, \
                     Size: {self.size}, Quantity: {self.quantity}'
