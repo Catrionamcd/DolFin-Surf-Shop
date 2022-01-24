@@ -6,7 +6,7 @@
 
 from django.contrib import admin
 from .models import Category, SubCategory, Brand, Colour
-from .models import Product, ProductInventory, ProductColour
+from .models import Product, ProductInventory, ProductColour, ProductComment
 
 
 @admin.register(Category)
@@ -99,4 +99,15 @@ class ProductColourAdmin(admin.ModelAdmin):
     list_display = (
         'product',
         'colour',
+    )
+
+@admin.register(ProductComment)
+class ProductCommentAdmin(admin.ModelAdmin):
+    """
+        Admin for the for the Product Comment Model.
+    """
+    list_display = (
+        'product',
+        'product_comment',
+        'author',
     )

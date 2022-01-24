@@ -8,8 +8,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
 from django.db.models.functions import Lower
-from .models import Product, Category, SubCategory, Brand
-from .forms import ProductForm
+from .models import Product, Category, SubCategory, Brand, ProductComment
+from .forms import ProductForm, ProductCommentForm
 from checkout.models import Order, OrderLineItem
 from django.core.paginator import Paginator
 
@@ -190,15 +190,33 @@ def product_detail(request, product_id):
                 freq_bought_together_id = each_product_count_desc[1]['product']
                 freq_bought_together = get_object_or_404(Product, pk=freq_bought_together_id)
 
-    """ if orders found for this product hide Admin product delete option in product page """ 
+    """ 
+        if orders found for this product hide Admin 
+        product delete option in product page
+    """
     product_has_no_orders = True
     if orders_with_this_product:
         product_has_no_orders = False
+
+
+    """ if user is logged on - check if they have created a comment for this product """
+    user_product_comment = ""
+    if request.user.is_authenticated:
+        try:
+            user_product_comment = ProductComment.objects.get(product=product_id, author=request.user)
+        except ProductComment.DoesNotExist:
+            user_product_comment = ""
+
+    """ Get all user review for this product """
+    product_comments = ProductComment.objects.filter(product=product_id)
 
     context = {
         'product': product,
         'freq_bought_together': freq_bought_together,
         'product_has_no_orders': product_has_no_orders,
+        'user_product_comment': user_product_comment,
+        'product_comments': product_comments,
+        # "current_user": request.user
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -210,7 +228,7 @@ def add_product(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-        
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -245,7 +263,8 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request,  
+                           'Failed to update product. Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -258,6 +277,7 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
@@ -269,3 +289,71 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+@login_required
+def add_product_comment(request, product_id):
+    
+    """ Add a comment to a product """
+    product = get_object_or_404(Product, pk=product_id)
+    
+    if request.method == 'POST':
+        form = ProductCommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            product_comment = form.save(commit=False)
+            product_comment.product = product
+            product_comment.author = request.user
+            product_comment.save()
+            messages.success(request, 'Successfully added comment!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to add comment. Please ensure the form is valid.')
+    else:
+        form = ProductCommentForm()
+    
+    template = 'products/product_comment.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_product_comment(request, product_id):
+
+    """ Edit a comment on a product """
+    product = get_object_or_404(Product, pk=product_id)
+    product_comment = get_object_or_404(ProductComment, product=product, author=request.user)
+    print("COMMENT: ", product_comment.author)
+    if request.method == 'POST':
+        form = ProductCommentForm(request.POST, request.FILES, instance=product_comment)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated comment!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request,  
+                           'Failed to update comment. Please ensure the form is valid.')
+    else:
+        form = ProductCommentForm(instance=product_comment)
+        messages.info(request, f'You are editing a comment for {product.name}')
+
+    template = 'products/product_comment.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_product_comment(request, product_id):
+
+    product = get_object_or_404(Product, pk=product_id)
+    product_comment = get_object_or_404(ProductComment, product=product.id, author=request.user)
+    product_comment.delete()
+    messages.success(request, 'Comment deleted!')
+    return redirect(reverse('product_detail', args=[product.id]))

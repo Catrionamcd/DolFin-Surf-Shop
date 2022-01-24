@@ -60,7 +60,7 @@ The font Lato as selected for simplicity.
 
 7.	Shopper - View all products that are available on the site.
 8.	Shopper - View an individual product details, get a more detailed description, product size, colour depending on the type of product.
-8.	Shopper	- View commonly purchased product or products with the product on view. See other product or products that were bought along with the product thatthe shopper is currently viewing.
+8.	Shopper	- View commonly purchased product or products with the product on view. See other product or products that were bought along with the product that the shopper is currently viewing.
 10.	Shopper - View running total of items and total cost in shopping bag. 
 
 ### Epic - Filter,  Sort and Search	
@@ -75,7 +75,7 @@ The font Lato as selected for simplicity.
 17.	Shopper	- Purchase a gift card for a particular value to buy a gift for a friend.
 18.	Shopper	- View items in my bag to be purchased to identify the total cost of their purchase.
 19.	Shopper	- Adjust the quantity of individual items in my bag.
-20.	Shopper	- Easily enter my payment information. 
+20.	Shopper	- Easily enter their payment information. 
 21.	Shopper	- View an order confirmation after checkout.
 22.	Shopper	- Receive an email confirmation after checking out to have the confirmation of what they have purchased.
 
@@ -95,34 +95,27 @@ Use of gift voucher for payment
 Dispatch
 Product Inventory 
 ### Navigation Bar
-Logo
+#### Logo
 
 ![Logo](assets/documentation/Logo-Screen.png)
 
 The Logo links back to the home page.
 
-Navigation Bar
+#### Navigation Bar
 
 ![alt text](assets/documentation/Dolfin-Nav-Bar.png)
 
 If the user is not signed in the Login/Register links are visible in the navbar. If the user is signed the user name is displayed on the navigation bar next to the shopping basket.
 
-![alt text](assets/documentation/Dolfin-Admin-Login.png)
+![alt text](assets/documentation/Dolfin-User-Login.png)
 
-This dropdown menu will include an Product Management option.
+This dropdown menu will include an Product Management option along with the Profile option.
+
+![alt text](assets/documentation/Dolfin-Admin-Login.png)
 
 The navbar sticks to the top of the page so remains in view for the user to easily navigate around the site.
 
-
-
-
-![alt text](assets/images/.png)
-
-* The navigation bar is located at the top of all pages on the site.
-* The options available dynamically change depending on the type of viewer and depending on the specific menu path chosen.
 ### Registration/Login Forms
-
-### Home button
 
 
 ## Functions
@@ -160,7 +153,7 @@ The navbar sticks to the top of the page so remains in view for the user to easi
 * [Techsini](https://techsini.com/multi-mockup/) - used for the multi device site mockups
 
 ## Testing
-### Manual Testing
+Manual Testing Documentation [here](TEST.md)
 
 ### Validator Testing
 

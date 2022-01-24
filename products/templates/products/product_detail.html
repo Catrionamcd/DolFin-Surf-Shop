@@ -16,7 +16,7 @@
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
                 <div class="image-container my-5">
                     {% if product.image %}
-                        <img class="card-image-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" style="max-height:500px">
+                        <img class="card-image-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                     {% else %}
                          <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                     {% endif %}
@@ -41,12 +41,24 @@
                         <small class="ml-3">
                             <a href="{% url 'edit_product' product.id %}">Edit</a>
                             {% if product_has_no_orders %}| 
-
                             <button type="button" class="text-danger" style="background: none!important; border: none; padding: 0!important;" 
                             data-toggle="modal" data-target="#confirmManageDelete{{ forloop.counter }}">Delete</button>                            
                             {% endif %}
                         </small>
                     {% endif %}
+
+                    {% if user.is_authenticated %}
+                        <small class="ml-3">
+                        {% if user_product_comment %}
+                        <a href="{% url 'edit_product_comment' product.id %}">Edit Review</a>
+                        <button type="button" class="text-danger" style="background: none!important; border: none; padding: 0!important;" 
+                        data-toggle="modal" data-target="#confirmCommentDelete{{ forloop.counter }}">| Delete Review</button>  
+                        {% else%}
+                        <a href="{% url 'add_product_comment' product.id %}">Review Product</a>  
+                        {% endif %}
+                        </small>
+                    {% endif %}
+
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
@@ -105,7 +117,8 @@
                         </div>
                     </form>
 
-                    <!-- Modal for Delete Button above-->
+                    {% if request.user.is_superuser and product_has_no_orders %}
+                    <!-- Modal for Product Delete Button above-->
                     <div class="modal fade" id="confirmManageDelete" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content ">
@@ -128,6 +141,33 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+
+                    {% if user.is_authenticated and user_product_comment %}
+                    <!-- Modal for Comment Delete Button above-->
+                    <div class="modal fade" id="confirmCommentDelete" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content ">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Comment Deletion</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    This action will permanently delete your comment.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <form action="{% url 'delete_product_comment' product.id %}" method="post">
+                                    <button type="submit" class="btn btn-primary">Confirm Deletion</button>
+                                    {% csrf_token %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
 
                 </div>
             </div>
@@ -148,6 +188,24 @@
         </div>
         {% endif %}
 
+        <div class="row ml-4">
+            <h4>Customer Reviews</h4>
+        </div>
+        {% for product_comment in product_comments %}
+            <div class="row mt-2 ml-3">
+                <div class="col">
+                    <h5>{{ product_comment.author }}   {{ product_comment.updated_on|date:"M d, Y" }}</h5>
+                </div>
+            </div>
+
+            <div class="row ml-3">
+                <div class="col">
+                <h6>{{ product_comment.product_comment }}</h6>
+                </div>
+            </div>
+
+        {% endfor %}
+        
     </div>
 {% endblock %}
 

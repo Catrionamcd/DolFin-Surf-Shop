@@ -5,6 +5,7 @@
 """
 
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -182,3 +183,18 @@ class ProductColour(models.Model):
 
     def __str__(self):
         return f'Product: {self.product}, Colour: {self.colour}'
+
+
+class ProductComment(models.Model):
+    ''' User Product Comments '''
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product_comment = models.CharField(max_length=1000, blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-updated_on']
+
+    def __str__(self):
+        return self.product_comment

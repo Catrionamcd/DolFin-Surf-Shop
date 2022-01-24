@@ -3,8 +3,9 @@
 """
 
 from django import forms
+from django.forms import Textarea
 from .widgets import CustomClearableFileInput
-from .models import Product, Category
+from .models import Product, Category, ProductComment
 
 
 class ProductForm(forms.ModelForm):
@@ -24,3 +25,18 @@ class ProductForm(forms.ModelForm):
         self.fields['category'].choices = category_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
+
+
+class ProductCommentForm(forms.ModelForm):
+    """ A form to attach a user comment to a product to a """
+
+    class Meta:
+        model = ProductComment
+        fields = ('product_comment',)
+        labels = {
+            'product_comment': '<strong>Comment:</strong>'
+        }
+
+        widgets = {
+            'product_comment': Textarea(attrs={'cols': 200, 'rows': 10})
+        }
