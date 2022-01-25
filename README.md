@@ -223,6 +223,17 @@ summary screen of their order details.
 ### Product Management
 ### Profile & Order History
 ### Gift Card 
+## SEO & Marketing
+
+- A sitemap.xml file was created for the site.
+
+- Facebook - a Facebook Business page was set up for Dolfin Surf Shop. See images of the page below:
+
+![alt text](assets/documentation/Dolfin-FB1.png)
+
+![alt text](assets/documentation/Dolfin-FB2.png)
+
+- Mailchimp email subscription was set up for the site and the subscription form is on the footer of the page along with the Facebook link.
 
 ## Future Features
 
@@ -240,6 +251,7 @@ A facility to update an order line item as dispatched. The superuser or administ
 
 
 ## Bugs
+Git Guardian Postgres Database Url exposed. 
 Filter for gender
 Rating
 ## Technology

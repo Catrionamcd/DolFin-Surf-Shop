@@ -10,8 +10,8 @@ urlpatterns = [
     path('<int:product_id>/', views.product_detail, name='product_detail'),
     path('add/', views.add_product, name='add_product'),
     path('edit/<int:product_id>/', views.edit_product, name='edit_product'),
-    path('delete/<int:product_id>/', views.delete_product, name='delete_product'),
-    path('add_product_comment/<int:product_id>/', views.add_product_comment, name='add_product_comment'),
-    path('edit_product_comment/<int:product_id>/', views.edit_product_comment, name='edit_product_comment'),
-    path('delete_product_comment/<int:product_id>/', views.delete_product_comment, name='delete_product_comment'),
+    path('delete/<int:product_id>/', views.delete_product, name='delete_product'),  # noqa
+    path('add_product_comment/<int:product_id>/', views.add_product_comment, name='add_product_comment'),  # noqa
+    path('edit_product_comment/<int:product_id>/', views.edit_product_comment, name='edit_product_comment'),  # noqa
+    path('delete_product_comment/<int:product_id>/', views.delete_product_comment, name='delete_product_comment'),  # noqa
 ]

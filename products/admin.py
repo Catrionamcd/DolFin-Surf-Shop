@@ -91,6 +91,7 @@ class ProductInventoryAdmin(admin.ModelAdmin):
         'quantity'
     )
 
+
 @admin.register(ProductColour)
 class ProductColourAdmin(admin.ModelAdmin):
     """
@@ -100,6 +101,7 @@ class ProductColourAdmin(admin.ModelAdmin):
         'product',
         'colour',
     )
+
 
 @admin.register(ProductComment)
 class ProductCommentAdmin(admin.ModelAdmin):

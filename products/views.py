@@ -31,7 +31,7 @@ def update_session(request):
     gender_checked = request.POST.getlist('gender_checked[]')
     gender_checked_num = list(map(int, gender_checked))
 
-    if request.is_ajax():      
+    if request.is_ajax():
         try:
             request.session['cat_checked'] = cat_checked_num
             request.session['cat_indeterminate'] = cat_indeterminate_num
@@ -42,14 +42,14 @@ def update_session(request):
             return HttpResponse('Error')
     else:
         raise Http404
-    
+
     return HttpResponse("Success")
 
 
 def all_products(request):
     """A view to show all products, including sorting and search queries """
 
-    categories_list = Category.objects.all().annotate(subcat_count=Count('subcategory'))
+    categories_list = Category.objects.all().annotate(subcat_count=Count('subcategory'))  # noqa
     subcategories_list = SubCategory.objects.all()
     brands = Brand.objects.all()
     genders = Product.gender.field.choices
@@ -79,20 +79,22 @@ def all_products(request):
                 sub_checked = list(map(int, sub_checked))
                 request.session['sub_checked'] = sub_checked
 
-
-    # if NO categories, sub-categories, brands, or gender retrieved from session
-    if cat_checked == [] and sub_checked == [] and brand_checked == [] and gender_checked == []:
-        # then select all categories, sub-categories, brands and genders for view (except gift cards)
-        cat_checked = list(categories_list.exclude(giftcard_category=True).values_list('id', flat=True))
-        sub_checked = list(subcategories_list.exclude(category__giftcard_category=True).values_list('id', flat=True))
+    # if NO categories, sub-categories, brands,
+    # or gender retrieved from session
+    if cat_checked == [] and sub_checked == [] and brand_checked == [] and gender_checked == []:  # noqa
+        # then select all categories, sub-categories, brands
+        # and genders for view (except gift cards)
+        cat_checked = list(categories_list.exclude(giftcard_category=True).values_list('id', flat=True))  # noqa
+        sub_checked = list(subcategories_list.exclude(category__giftcard_category=True).values_list('id', flat=True))  # noqa
         brand_checked = list(brands.values_list('id', flat=True))
         gender_checked_string = list([gender[0] for gender in genders])
         gender_checked = list(map(int, gender_checked_string))
 
-    # """ First get full product list and annotate the sale price of each item """                
+    # First get full product list and annotate the
+    # sale price of each item """
     products = Product.objects.all().exclude(obsolete=True
-        ).exclude(Q(has_gender=True), ~Q(gender__in=gender_checked)
-        ).filter(
+        ).exclude(Q(has_gender=True), ~Q(gender__in=gender_checked)  # noqa
+        ).filter(  # noqa
             Q(category__in=cat_checked) | Q(subcategory__in=sub_checked),
             Q(brand__in=brand_checked) | Q(category__giftcard_category=True)
         ).annotate(order_count=Count('orderlineitem'))
@@ -125,10 +127,11 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request,
+                               "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
-            
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+
+            queries = Q(name__icontains=query) | Q(description__icontains=query)  # noqa
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -158,52 +161,59 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-
 def product_detail(request, product_id):
     """A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
 
-    """ Get Product that was ordered the most while ordering this selected product """
-    """ First get a list of all Orders that include this selected Product """
-    orders_with_this_product = OrderLineItem.objects.filter(product=product_id).values_list('order',flat=True)
-    """ Next get a list of Product Items ordered in all of the Orders retrieved above BUT not giftcards """
-    all_products_in_these_orders = OrderLineItem.objects.filter(order__in=orders_with_this_product).exclude(product__category__giftcard_category=True).exclude(product__obsolete=True)
-    """ Now Count how many times each product was ordered across all of these Orders """
-    each_product_count = all_products_in_these_orders.values('product').order_by('product').annotate(num_ordered=Count('product'))
-    """ Finally sequence from largest to smallest count """
+    # Get Product that was ordered the most while ordering
+    # this selected product. First get a list of all Orders
+    # that include this selected Product.
+    orders_with_this_product = OrderLineItem.objects.filter(product=product_id).values_list('order',flat=True)  # noqa
+    # Next get a list of Product Items ordered in all of
+    # the Orders retrieved above BUT not giftcards
+    all_products_in_these_orders = OrderLineItem.objects.filter(order__in=orders_with_this_product).exclude(product__category__giftcard_category=True).exclude(product__obsolete=True)  # noqa
+    # Now Count how many times each product was ordered
+    # across all of these Orders
+    each_product_count = all_products_in_these_orders.values('product').order_by('product').annotate(num_ordered=Count('product'))  # noqa
+    # Finally sequence from largest to smallest count
     each_product_count_desc = each_product_count.all().order_by('-num_ordered')
 
     freq_bought_together = ""
 
-    """ First check if any additional products in the list. Current product plus at least one other """
-    """ Only interested in highest count so take from start of list """
+    # First check if any additional products in the list. Current product
+    # plus at least one other. Only interested in highest count so take from
+    # start of list
     if len(each_product_count_desc) > 1:
-        """ first check if current product is at start of list and if it is then take the next one on the list """
+        # First check if current product is at start of list and
+        # if it is then take the next one on the list
         if not each_product_count_desc[0]['product'] == product_id:
-            """ Must have been order at least 3 times with this product to be considered as Frequently Bought Together """
+            # Must have been order at least 3 times with this product
+            # to be considered as Frequently Bought Together
             if each_product_count_desc[0]['num_ordered'] > 2:
                 freq_bought_together_id = each_product_count_desc[0]['product']
-                freq_bought_together = get_object_or_404(Product, pk=freq_bought_together_id)
+                freq_bought_together = get_object_or_404(Product, pk=freq_bought_together_id)  # noqa
         else:
             if each_product_count_desc[1]['num_ordered'] > 2:
                 freq_bought_together_id = each_product_count_desc[1]['product']
-                freq_bought_together = get_object_or_404(Product, pk=freq_bought_together_id)
+                freq_bought_together = get_object_or_404(Product, pk=freq_bought_together_id)  # noqa
 
-    """ 
-        if orders found for this product hide Admin 
+    """
+        if orders found for this product hide Admin
         product delete option in product page
     """
     product_has_no_orders = True
     if orders_with_this_product:
         product_has_no_orders = False
 
-
-    """ if user is logged on - check if they have created a comment for this product """
+    """
+        If user is logged on - check if they have created a
+        comment for this product
+    """
     user_product_comment = ""
     if request.user.is_authenticated:
         try:
-            user_product_comment = ProductComment.objects.get(product=product_id, author=request.user)
+            user_product_comment = ProductComment.objects.get(product=product_id, author=request.user)  # noqa
         except ProductComment.DoesNotExist:
             user_product_comment = ""
 
@@ -216,7 +226,6 @@ def product_detail(request, product_id):
         'product_has_no_orders': product_has_no_orders,
         'user_product_comment': user_product_comment,
         'product_comments': product_comments,
-        # "current_user": request.user
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -236,10 +245,10 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add product. Please ensure the form is valid.')  # noqa
     else:
         form = ProductForm()
-    
+
     template = 'products/add_product.html'
     context = {
         'form': form,
@@ -263,8 +272,8 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request,  
-                           'Failed to update product. Please ensure the form is valid.')
+            messages.error(request,
+                           'Failed to update product. Please ensure the form is valid.')  # noqa
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -293,10 +302,10 @@ def delete_product(request, product_id):
 
 @login_required
 def add_product_comment(request, product_id):
-    
+
     """ Add a comment to a product """
     product = get_object_or_404(Product, pk=product_id)
-    
+
     if request.method == 'POST':
         form = ProductCommentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -307,10 +316,10 @@ def add_product_comment(request, product_id):
             messages.success(request, 'Successfully added comment!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add comment. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add comment. Please ensure the form is valid.')  # noqa
     else:
         form = ProductCommentForm()
-    
+
     template = 'products/product_comment.html'
     context = {
         'form': form,
@@ -325,17 +334,18 @@ def edit_product_comment(request, product_id):
 
     """ Edit a comment on a product """
     product = get_object_or_404(Product, pk=product_id)
-    product_comment = get_object_or_404(ProductComment, product=product, author=request.user)
+    product_comment = get_object_or_404(ProductComment, product=product,
+                                        author=request.user)
     print("COMMENT: ", product_comment.author)
     if request.method == 'POST':
-        form = ProductCommentForm(request.POST, request.FILES, instance=product_comment)
+        form = ProductCommentForm(request.POST, request.FILES, instance=product_comment)  # noqa
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated comment!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request,  
-                           'Failed to update comment. Please ensure the form is valid.')
+            messages.error(request,
+                           'Failed to update comment. Please ensure the form is valid.')  # noqa
     else:
         form = ProductCommentForm(instance=product_comment)
         messages.info(request, f'You are editing a comment for {product.name}')
@@ -353,7 +363,8 @@ def edit_product_comment(request, product_id):
 def delete_product_comment(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
-    product_comment = get_object_or_404(ProductComment, product=product.id, author=request.user)
+    product_comment = get_object_or_404(ProductComment, product=product.id,
+                                        author=request.user)
     product_comment.delete()
     messages.success(request, 'Comment deleted!')
     return redirect(reverse('product_detail', args=[product.id]))

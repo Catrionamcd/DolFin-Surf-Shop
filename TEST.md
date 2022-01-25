@@ -5,13 +5,15 @@ Manual testing throughout the site. Steps and results are as follows.
 ### Epic - Registration and User Accounts	
 Allow the site visitor to register on the site and have a personal profile. To easily login or logout of the site.
 
+Register a new user to the site.
 ![alt text](assets/documentation/Dolfin-Signup.png)
-
+Sign in as an existing user on the site.
 ![alt text](assets/documentation/Dolfin-Sign-In.png)
 
 ![alt text](assets/documentation/Success-SignIn-Msg.png)
-
+Sign out of the site.
 ![alt text](assets/documentation/Dolfin-SignOut.png)
+
 
 
 3.	Site User - Easily recover their password if needs be.
