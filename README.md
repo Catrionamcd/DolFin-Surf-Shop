@@ -44,6 +44,12 @@ When designing the look and feel of the site I looked at the Amazon website and 
 ![](assets/documentation/Desktop-Checkout-Screen.png)
 ![](assets/documentation/Mobile-Checkout-Screen.png)
 
+
+### Data Models
+
+![](assets/documentation/Relational-Database-Models.png)
+
+
 ### Colours
 
 The colours were chosen along with the images to convey a cool breezy beach vibe. 
@@ -52,9 +58,6 @@ The predominant colour is cool blue: #a9f6fc for the background. Font colours is
 
 The font Lato as selected for simplicity.
 
-### Data Models
-
-![Data Model](assets/images/.png)
 ## User Stories
 ### Epic - Registration and User Accounts	
 1.	Site User -	Allow the site visitor to register on the site and have a personal profile. 
@@ -123,7 +126,7 @@ The font Lato as selected for simplicity.
 ### Footer
 
 The footer at the bootom of the screen invites the shopper to stay in touch with the DolFin Surf Shop. 
-- A Facebook business page was created and the link to Facebook is in the footer of the page along with an invitation to subscribe to a newsletter created using Mailchimp. 
+- A Facebook business page was created and the link to Facebook is in the footer of the page along with an invitation to subscribe to a newsletter created using Mailchimp by entering their email address.  
 
 ![alt text](assets/documentation/Dolfin-Footer.png)
 
@@ -150,8 +153,9 @@ The homepage on DolFIn Surf Shop will display a image card for each category in 
 - The sale discount will appear on the top of the card category if a sale percent has been entered against this category by the administrator.
 - The new sale price for each product within the sale category will be calculated and displayed along with the original price of the product throughout the site.
 
-![alt text](assets/documentation/Side-Menu.png)
 - A side menu allows the user to also select a category or categories depending on what they have choosen. 
+
+![alt text](assets/documentation/Side-Menu.png)
 - A shopper may also decide to filter by certain brands.
 - A shopper may use the search bar to enter a certain description or name of a product. This makes the site very flexible in searching and filtering for certain products.
 ![alt text](assets/documentation/Search-Bar.png)
@@ -164,11 +168,75 @@ Once the shopper has chosen the selection of products they wish to view the prod
 - The products page has an image of each product. The description and price of the product.
 - The shopper may click on any of these products to see a product in more detail.
 
+### Product Details Page
+Once the shopper has chosen the product that they wish to see in more detail, they will be presented with the prducts details page. 
+
+![alt text](assets/documentation/Product-Detail-Page.png)
+
+- An image of the product will be displayed along with the product name and decscription
+- The price of the product will be displayed.
+- The sale price will be displayed in red if there is a sale percent value against the category of the product.
+- If the superuser or administrator is logged in an edit button will be available.
+- If the superuser or administrator is logged in and the product has no orders attached to it, a delete button will be available.
+- A review button will be available to all users. This will allow the user to leave a comment on the product. These comments will be displayed at the bottom of the page.
+- If the product on display has been purchased more the twice alongside another product, both product images will be displayed on the screen as 'frequently bought together'.
+- The shopper can click on the images to view the products in more detail.
+- A product size can be entered.
+- A quantity to purchase can be entered.
+- A button to keep shopping will bring the shopper back to the products screen.
+- A button 'Add to Bag' will add the product to the shopping basket.
+
+### Product Review
+- Facility to leave a comment or a review about a product. The author, comment and date are all stored.
+
+![alt text](assets/documentation/Review-Screen.png)
+
+- There is also a facility to edit or delete a review.
+- All reviews are displayed at the bottom of the Product Details page.
+
+### Shopping Bag
+
+Once the shopper has decided what product they want to purchase they click 'add to bag'.
+- A shopping basket will appear in the top right hand side of the screen.
+
+![alt text](assets/documentation/Checkout-Bag.png)
+
+- The total cost of the product in the bag will appear in the navigation bar.
+- There is an option to go to secure checkout. 
+- Once clicked the shopper will be presented with a shopping bag page.
+
+![alt text](assets/documentation/Shopping-Bag.png)
+
+- There are options to update the quantity in the bags or to remove a product.
+
+### Checkout 
+Once the shopper is happy with the products in the bag they click on 'Secure Checkout'
+
+![alt text](assets/documentation/Checkout-Screen.png)
+
+- The shopper will be asked to enter their details.
+- The card payment details used for the project are in the above screen.
+- This will generate a Stripe payment and the shopper will be presented with a 
+summary screen of their order details.
+- A confirmation of the order will be also be emailed to the them from the DolFin Surf Shop.
+
+### Product Management
+### Profile & Order History
+### Gift Card 
 
 ## Future Features
-Use of gift voucher for payment
-Dispatch
-Product Inventory 
+
+### Product Inventory 
+
+I had created a Product Inventory Model. This model was to hold the quantity for all products, including products with different colours and different sizes. As a future feature I envisage that there would be a record of each product on the file and also a record for each colour and each size for this product. The administrator would update the quantity for each item with the amount of stock on hand. If a shopper selected a product of a particular colour or size the quantity in the Product Inventory File would have to be checked to see if there was enough stock to fill the order requested. If not, the shopper would be alerted and the order would not go through. If the stock is available the order would be processed and the quantity would be depleted accordingly. 
+
+### Gift voucher for payment
+
+A facility to use a gift voucher to purchase products. The voucher could be used in full or partly. I had created the model with a field for a remaining value.
+
+### Dispatch
+
+A facility to update an order line item as dispatched. The superuser or administrator could  update this field when the product is dispatched and trigger an email to be sent to the shopper to inform them of the progress of their order.
 
 
 ## Bugs
