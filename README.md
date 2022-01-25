@@ -36,6 +36,14 @@ When designing the look and feel of the site I looked at the Amazon website and 
 ![](assets/documentation/Desktop-Product-Detail-Screen.png)
 ![](assets/documentation/Mobile-Product-Detail-Screen.png)
 
+### Profile Page
+![](assets/documentation/Desktop-Profile-Screen.png)
+![](assets/documentation/Mobile-Profile-Screen.png)
+
+### Checkout Page
+![](assets/documentation/Desktop-Checkout-Screen.png)
+![](assets/documentation/Mobile-Checkout-Screen.png)
+
 ### Colours
 
 The colours were chosen along with the images to convey a cool breezy beach vibe. 
@@ -90,38 +98,82 @@ The font Lato as selected for simplicity.
 
 ## Existing Features
 
-## Future Features
-Use of gift voucher for payment
-Dispatch
-Product Inventory 
 ### Navigation Bar
 #### Logo
 
 ![Logo](assets/documentation/Logo-Screen.png)
 
-The Logo links back to the home page.
+- The Logo links back to the home page.
 
 #### Navigation Bar
 
 ![alt text](assets/documentation/Dolfin-Nav-Bar.png)
 
-If the user is not signed in the Login/Register links are visible in the navbar. If the user is signed the user name is displayed on the navigation bar next to the shopping basket.
+
+- If the user is not signed in the Login/Register links are visible in the navbar. If the user is signed in, the user name is displayed on the navigation bar next to the shopping basket. If the user name is clicked a drop down menu will appear with 'My Profile' and 'Logout' options. 
 
 ![alt text](assets/documentation/Dolfin-User-Login.png)
 
-This dropdown menu will include an Product Management option along with the Profile option.
+ - If a superuser or administrator is logged in the dropdown menu that will appear will include an 'Product Management' option along with the 'My Profile' and 'Logout' options.
 
 ![alt text](assets/documentation/Dolfin-Admin-Login.png)
 
-The navbar sticks to the top of the page so remains in view for the user to easily navigate around the site.
+- The navbar sticks to the top of the page so remains in view for the user to easily navigate around the site.
+
+### Footer
+
+The footer at the bootom of the screen invites the shopper to stay in touch with the DolFin Surf Shop. 
+- A Facebook business page was created and the link to Facebook is in the footer of the page along with an invitation to subscribe to a newsletter created using Mailchimp. 
+
+![alt text](assets/documentation/Dolfin-Footer.png)
 
 ### Registration/Login Forms
 
+The site user can use the site to shop for a product without having to register with the site.
+- They can however register on the site by entering in their email address, user name and password. 
+- They will receive an email for verification.
 
-## Functions
+![alt text](assets/documentation/Dolfin-Sign-In.png)
 
-### Future Features 
+![alt text](assets/documentation/Verify-Email.png)
 
+- Throughout the site the shopper will get contanst feedback through messages and alerts as shown in the screen above. 
+
+### Homepage - Categories
+
+The homepage on DolFIn Surf Shop will display a image card for each category in the category model. These categories are set up by the superuser or administrator of the site. 
+- A shopper may click one of these cards to see all the products availabe on the site within this category.
+
+![alt text](assets/documentation/Category-Screen.png)
+- All call to action appears at the top of the screen urging the shopper to click for a category and informing the shopper of a delivery deal.
+- There is a sale percent field in the category model. This may be updated by the superuser or administrator in the django dashboard. Once there is a value in this field, a 'Sale Now On' banner will show.
+- The sale discount will appear on the top of the card category if a sale percent has been entered against this category by the administrator.
+- The new sale price for each product within the sale category will be calculated and displayed along with the original price of the product throughout the site.
+
+![alt text](assets/documentation/Side-Menu.png)
+- A side menu allows the user to also select a category or categories depending on what they have choosen. 
+- A shopper may also decide to filter by certain brands.
+- A shopper may use the search bar to enter a certain description or name of a product. This makes the site very flexible in searching and filtering for certain products.
+![alt text](assets/documentation/Search-Bar.png)
+
+### Products Page 
+
+Once the shopper has chosen the selection of products they wish to view the products page will be displayed. 
+![alt text](assets/documentation/Products-Page.png)
+
+- The products page has an image of each product. The description and price of the product.
+- The shopper may click on any of these products to see a product in more detail.
+
+
+## Future Features
+Use of gift voucher for payment
+Dispatch
+Product Inventory 
+
+
+## Bugs
+Filter for gender
+Rating
 ## Technology
 ### Language Used
 
