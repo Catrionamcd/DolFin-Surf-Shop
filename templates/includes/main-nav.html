@@ -15,14 +15,14 @@
         <li class="nav-item dropdown">       
             
             <input class="form-check-input ml-1 main-nav-checkbox" type="checkbox" name="main-cat" id="main-cat-{{ category_item.id }}" value="{{ category_item.id }}">
-            <a class="text-nowrap ml-4 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
-                id="main-cat{{ category_item.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-nowrap ml-4 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
+                id="main-cat{{ category_item.id }}-name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ category_item.name }}  
-            </a>
+            </div>
             
             {% if category_item.subcat_count > 0 %}
             
-            <div class="dropdown-menu bg-dropdown-blue border-0 mt-0 pt-0 mb-0 pb-0 menu-font" aria-labelledby="homeware-link">
+            <div class="dropdown-menu bg-dropdown-blue border-0 mt-0 pt-0 mb-0 pb-0 menu-font">
             
                 {% for subcategory_item in category_item.subcategory_set.all %}
                 
@@ -47,10 +47,10 @@
         <li class="nav-item dropdown">       
             
             <input class="form-check-input ml-1" type="checkbox" name="main-brand" id="main-brand-{{ brand.id }}" value="{{ brand.id }}">
-            <a class="text-nowrap mr-5 ml-4" 
-                id="main-brand-{{ brand.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-nowrap mr-5 ml-4" 
+                id="main-brand-{{ brand.id }}-name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ brand.brand_name }}  
-            </a>
+        </div>
         </li>
         {% endfor %}
 
@@ -62,10 +62,10 @@
         {% for gender in genders %}      
         <li class="nav-item dropdown">       
             <input class="form-check-input ml-1" type="checkbox" name="main-gender" id="main-gender-{{ gender.0 }}" value="{{ gender.0 }}">
-            <a class="text-nowrap mr-5 ml-4" 
-                id="main-gender-{{ gender.0 }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-nowrap mr-5 ml-4" 
+                id="main-gender-{{ gender.0 }}-name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ gender.1 }}  
-            </a>
+        </div>
         </li>
         {% endfor %}
 

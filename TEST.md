@@ -7,13 +7,13 @@ Manual testing throughout the site. Steps and results are as follows.
 
 1. To register on the site and have a personal profile.
 
-![alt text](assets/documentation/Test-SignUp-Screen.png)
+![alt text](assets/test-documentation/Test-SignUp-Screen.png)
 
 2. To easily login or logout of the site.
 3. Receive an email when I have registered on the site.
 4. If incorrect username or password used, error message displayed.  
 
-![alt text](assets/documentation/Test-SignIn-Error.png)
+![alt text](assets/test-documentation/Test-SignIn-Error.png)
 
 Pass/Fail : **Pass**
 
@@ -26,7 +26,7 @@ Navigation - check that all navigation links work as expected
 2. Enter search in search criteria
 4. Click on Card Category to see all products for that category.
 
-![alt text](assets/documentation/Test-Products-NoLogin.png)
+![alt text](assets/test-documentation/Test-Products-NoLogin.png)
 
 Pass/Fail : **Pass**
 
@@ -77,5 +77,35 @@ Similarly when a 500 error occurs:
 
 ## HTML Validation
 ## Python
+
+**Bag**
+*Apps.py*
+![alt text](assets/code-validation/Bag-Apps-Py.png)
+**Bag**
+*Context.py*
+![alt text](assets/code-validation/Bag-Context-Py.png)
+**Bag**
+*Urls.py*
+![alt text](assets/code-validation/Bag-Urls-Py.png)
+**Bag**
+*Views.py*
+![alt text](assets/code-validation/Bag-Views-Py.png)
+**Bag/templatetags**
+*bag_tools.py*
+![alt text](assets/code-validation/Bag-Tools-Py.png)
+
+**Checkout**
+*Admin.py*
+![alt text](assets/code-validation/Checkout-Admin-Py.png)
+*Apps.py*
+![alt text](assets/code-validation/Checkout-Admin-Py.png)
+*Checkout-Filters.py*
+![alt text](assets/code-validation/Checkout-Admin-Py.png)
+*Forms.py*
+![alt text](assets/code-validation/Checkout-Admin-Py.png)
+*Models.py*
+![alt text](assets/code-validation/Checkout-Models-Py.png)
+
+
 ## Javascript
 

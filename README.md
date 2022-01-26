@@ -188,7 +188,7 @@ Once the shopper has chosen the product that they wish to see in more detail, th
 
 ### Product Review
 - Facility to leave a comment or a review about a product. The author, comment and date are all stored.
-- Only a registered customer will get have the option to review a product.
+- Only a registered customer will have the option to review a product.
 
 ![alt text](assets/documentation/Review-Screen.png)
 
@@ -222,7 +222,13 @@ summary screen of their order details.
 - A confirmation of the order will be also be emailed to the them from the DolFin Surf Shop.
 
 ### Product Management
+![alt text](assets/documentation/Product-Edit-Screen1.png)
+
+![alt text](assets/documentation/Product-Edit-Screen2.png)
 ### Profile & Order History
+
+![alt text](assets/documentation/Dolfin-Profile-Screen.png)
+
 ### Gift Card 
 ## SEO & Marketing
 
@@ -260,9 +266,8 @@ Update the ratings field in the shopper comment/review facility.
 
 ![alt text](assets/documentation/Heroku-Addons.png)
 
-I then had to add a new database and update my env.py file with this new address. Then I had to load the data back into the new database that was set up. I also had to migrate all the changes. 
+I then had to add a new database and update my env.py file with the new Postgres url address. I had to load the data back into the new database. I also had to migrate all the changes. 
 
-Rating
 ## Technology
 ### Language Used
 
