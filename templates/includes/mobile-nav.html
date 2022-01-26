@@ -1,13 +1,13 @@
 <div class="collapse navbar-collapse" id="mobile-nav">
     <ul class="navbar-nav w-auto mx-auto d-block d-lg-none">
         <li class="nav-item d-block d-md-none">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'home' %}" id="home-link">
+            <a class="logo-font font-weight-bold nav-link mr-2" href="{% url 'home' %}" id="mob-home-link">
                 Home
             </a>
         </li>
 
         <li class="nav-item">
-            <a class=" font-weight-bold nav-link text-black mr-5">
+            <a class=" font-weight-bold nav-link mr-2">
                 Category
             </a>
         </li>
@@ -15,10 +15,10 @@
         <li class="nav-item dropdown">       
             
             <input class="form-check-input ml-1" type="checkbox" name="mob-cat" id="mob-cat-{{ category_item.id }}" value="{{ category_item.id }}">
-            <span class="text-black text-nowrap mr-5 ml-4 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
-                id="{{ category_item.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-nowrap mr-2 ml-1 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
+                id="mob-cat-{{ category_item.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ category_item.name }}  
-            </span>
+            </div>
             
             {% if category_item.subcat_count > 0 %}
             
@@ -26,10 +26,10 @@
             
                 {% for subcategory_item in category_item.subcategory_set.all %}
                 
-                <span class="dropdown-item pt-0 mb-0 pb-0">
+                <div class="dropdown-item pt-0 mb-0 pb-0">
                     <input type="checkbox" name="mob-sub" id="mob-sub-{{ subcategory_item.id }}" value="{{ subcategory_item.id }}">
                     {{ subcategory_item.friendly_name }}
-                </span>
+                </div>
                 
                 {% endfor %}
             
@@ -39,7 +39,7 @@
         {% endfor %}
 
         <li class="nav-item">
-            <a class=" font-weight-bold nav-link text-black mr-5">
+            <a class=" font-weight-bold nav-link mr-2">
                 Brand
             </a>
         </li>  
@@ -47,25 +47,25 @@
         <li class="nav-item dropdown">       
             
             <input class="form-check-input ml-1" type="checkbox" name="mob-brand" id="mob-brand-{{ brand.id }}" value="{{ brand.id }}">
-            <a class="text-black text-nowrap mr-5 ml-4" 
-                id="{{ brand.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-nowrap mr-2 ml-1" 
+                id="mob-brand-{{ brand.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ brand.brand_name }}  
-            </a>
+            </div>
         </li>
         {% endfor %}
 
         <li class="nav-item">
-            <a class=" font-weight-bold nav-link text-black mr-5">
+            <a class=" font-weight-bold nav-link mr-2">
                 Gender
             </a>
         </li>  
         {% for gender in genders %}      
         <li class="nav-item dropdown">       
             <input class="form-check-input ml-1" type="checkbox" name="mob-gender" id="mob-gender-{{ gender.0 }}" value="{{ gender.0 }}">
-            <a class="text-black text-nowrap mr-5 ml-4" 
-                id="{{ gender.0 }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-nowrap mr-2 ml-1" 
+                id="mob-gender-{{ gender.0 }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ gender.1 }}  
-            </a>
+            </div>
         </li>
         {% endfor %}
 

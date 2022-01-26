@@ -6,7 +6,7 @@ The DolFin Surf Shop is an E-Commerce shopping site. The site sells surf equipme
 
 ![DolFin-Surf](assets/documentation/Dolfin-Multi-Device.png)
 
-[DolFin Surf Shop](https://dolfin-surf-shop.herokuapp.com/)
+[DolFin Surf Shop](https://dolfin-surf-shop.herokuapp.com/) - please click to run site here.
 
 ## Design of the site
 
@@ -188,6 +188,7 @@ Once the shopper has chosen the product that they wish to see in more detail, th
 
 ### Product Review
 - Facility to leave a comment or a review about a product. The author, comment and date are all stored.
+- Only a registered customer will get have the option to review a product.
 
 ![alt text](assets/documentation/Review-Screen.png)
 
@@ -249,10 +250,18 @@ A facility to use a gift voucher to purchase products. The voucher could be used
 
 A facility to update an order line item as dispatched. The superuser or administrator could  update this field when the product is dispatched and trigger an email to be sent to the shopper to inform them of the progress of their order.
 
+### Ratings
+
+Update the ratings field in the shopper comment/review facility.
+
 
 ## Bugs
-Git Guardian Postgres Database Url exposed. 
-Filter for gender
+**Git Guardian Postgres Database Url exposed.** I exposed the URL of my Postgres Database site in Heroku near the end of the project. I had to backup the database, dump it into a json file and delete it as an add-on under the Heroku resources for my app. 
+
+![alt text](assets/documentation/Heroku-Addons.png)
+
+I then had to add a new database and update my env.py file with this new address. Then I had to load the data back into the new database that was set up. I also had to migrate all the changes. 
+
 Rating
 ## Technology
 ### Language Used

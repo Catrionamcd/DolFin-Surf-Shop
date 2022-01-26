@@ -1,29 +1,34 @@
-Manual Testing
+# Manual Testing
 Manual testing throughout the site. Steps and results are as follows.
 
 ## User Stories
-### Epic - Registration and User Accounts	
-Allow the site visitor to register on the site and have a personal profile. To easily login or logout of the site.
+### Epic - Registration and User Accounts
+##### Testing Steps:
 
-Register a new user to the site.
-![alt text](assets/documentation/Dolfin-Signup.png)
-Sign in as an existing user on the site.
-![alt text](assets/documentation/Dolfin-Sign-In.png)
+1. To register on the site and have a personal profile.
 
-![alt text](assets/documentation/Success-SignIn-Msg.png)
-Sign out of the site.
-![alt text](assets/documentation/Dolfin-SignOut.png)
+![alt text](assets/documentation/Test-SignUp-Screen.png)
 
+2. To easily login or logout of the site.
+3. Receive an email when I have registered on the site.
+4. If incorrect username or password used, error message displayed.  
 
+![alt text](assets/documentation/Test-SignIn-Error.png)
 
-3.	Site User - Easily recover their password if needs be.
-4.	Site User -	Receive an email confirmation after registering	to verify their account registration was successful.
-5.	Site User - Have a personalized user profile to view their profile and order history. 
-6.	Site User - Facility to review a product purchased to inform other shoppers of my views on the product.
-
-Pass/Fail : Pass
+Pass/Fail : **Pass**
 
 ### Epic - View and Navigation	
+
+Navigation - check that all navigation links work as expected
+#### Testing Steps:
+
+1. Without logging in click on the links in the navbar
+2. Enter search in search criteria
+4. Click on Card Category to see all products for that category.
+
+![alt text](assets/documentation/Test-Products-NoLogin.png)
+
+Pass/Fail : **Pass**
 
 7.	Shopper - View all products that are available on the site.
 8.	Shopper - View an individual product details, get a more detailed description, product size, colour depending on the type of product.
@@ -52,3 +57,25 @@ Pass/Fail : Pass
 25.	Site Owner - Delete a product that has no orders attached.
 26.	Site Owner - Ability to make a product obsolete so that is no longer available for sale on the site.
 27.	Site Owner - Ability to add a discount to a particular category of products	to offer sale discount to the customers.
+
+
+# 404/500 Custom Error Screens
+
+If a 404 error occurs a custom Dolfin Surf Shop screen will be displayed with the link to direct the sjopper back to the site.
+
+![alt text](assets/documentation/404-Error-Screen.png)
+
+Similarly when a 500 error occurs:
+
+![alt text](assets/documentation/500-Error-Screen.png)
+
+# Code Validation
+
+## CSS Validation
+
+![alt text](assets/documentation/CSS-Validator.png) 
+
+## HTML Validation
+## Python
+## Javascript
+

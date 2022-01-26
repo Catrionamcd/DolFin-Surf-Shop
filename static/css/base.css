@@ -305,7 +305,7 @@ input[name='q']::placeholder {
     }
 
     .header-container {
-        padding-top: 95px;
+        padding-top: 88px;
     }
 
 }
@@ -334,7 +334,7 @@ input[name='q']::placeholder {
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 65px;
+        padding-top: 85px;
     }
 
     body {
