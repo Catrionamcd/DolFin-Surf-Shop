@@ -16,7 +16,7 @@
             
             <input class="form-check-input ml-1 main-nav-checkbox" type="checkbox" name="main-cat" id="main-cat-{{ category_item.id }}" value="{{ category_item.id }}">
             <div class="text-nowrap ml-4 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
-                id="main-cat{{ category_item.id }}-name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                id="main-cat{{ category_item.id }}-name" role="layout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ category_item.name }}  
             </div>
             
@@ -47,8 +47,7 @@
         <li class="nav-item dropdown">       
             
             <input class="form-check-input ml-1" type="checkbox" name="main-brand" id="main-brand-{{ brand.id }}" value="{{ brand.id }}">
-            <div class="text-nowrap mr-5 ml-4" 
-                id="main-brand-{{ brand.id }}-name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-nowrap mr-5 ml-4" id="main-brand-{{ brand.id }}-name">
                 {{ brand.brand_name }}  
         </div>
         </li>
@@ -62,8 +61,7 @@
         {% for gender in genders %}      
         <li class="nav-item dropdown">       
             <input class="form-check-input ml-1" type="checkbox" name="main-gender" id="main-gender-{{ gender.0 }}" value="{{ gender.0 }}">
-            <div class="text-nowrap mr-5 ml-4" 
-                id="main-gender-{{ gender.0 }}-name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-nowrap mr-5 ml-4" id="main-gender-{{ gender.0 }}-name">
                 {{ gender.1 }}  
         </div>
         </li>
@@ -212,9 +210,7 @@
                     brand_checked: brandChecked, gender_checked: genderChecked},
             success: function(response){},
             complete: function(){},
-            error: function (xhr, textStatus, thrownError){
-                alert("Error in ajax post");
-            }
+            error: function (xhr, textStatus, thrownError){}
         });
 
         sleep(10);
