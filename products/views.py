@@ -169,7 +169,7 @@ def product_detail(request, product_id):
     # Get Product that was ordered the most while ordering
     # this selected product. First get a list of all Orders
     # that include this selected Product.
-    orders_with_this_product = OrderLineItem.objects.filter(product=product_id).values_list('order',flat=True)  # noqa
+    orders_with_this_product = OrderLineItem.objects.filter(product=product_id).values_list('order', flat=True)  # noqa
     # Next get a list of Product Items ordered in all of
     # the Orders retrieved above BUT not giftcards
     all_products_in_these_orders = OrderLineItem.objects.filter(order__in=orders_with_this_product).exclude(product__category__giftcard_category=True).exclude(product__obsolete=True)  # noqa

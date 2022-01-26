@@ -178,7 +178,7 @@ class ProductColour(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['product', 'colour'], name='product_colour_constraint')  # noqa 
+            models.UniqueConstraint(fields=['product', 'colour'], name='product_colour_constraint')  # noqa
         ]
 
     product = models.ForeignKey('Product', null=True, blank=True,
