@@ -3,14 +3,14 @@
     products.
 """
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
 from django.db.models.functions import Lower
 from .models import Product, Category, SubCategory, Brand, ProductComment
 from .forms import ProductForm, ProductCommentForm
-from checkout.models import Order, OrderLineItem
+from checkout.models import OrderLineItem
 from django.core.paginator import Paginator
 
 
@@ -65,7 +65,7 @@ def all_products(request):
         if 'category_filter' in request.GET:
             """ if category selected from Home Page """
             category_filter = request.GET['category_filter']
-            if not category_filter in cat_checked:
+            if category_filter not in cat_checked:
                 """ Update menu Checkbox with selected category"""
                 cat_checked.append(category_filter)
                 cat_checked = list(map(int, cat_checked))
@@ -73,7 +73,7 @@ def all_products(request):
                 """ Check if Category has sub-categories """
                 subcats = SubCategory.objects.filter(category=category_filter)
                 for subcat in subcats:
-                    if not subcat.id in sub_checked:
+                    if subcat.id not in sub_checked:
                         """ update menu checkbox with sub-categories """
                         sub_checked.append(subcat.id)
                 sub_checked = list(map(int, sub_checked))

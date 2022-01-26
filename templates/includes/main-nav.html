@@ -16,7 +16,7 @@
             
             <input class="form-check-input ml-1 main-nav-checkbox" type="checkbox" name="main-cat" id="main-cat-{{ category_item.id }}" value="{{ category_item.id }}">
             <div class="text-nowrap ml-4 {% if category_item.subcat_count > 0 %} dropdown-toggle {% endif %}" 
-                id="main-cat{{ category_item.id }}-name" role="layout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                id="main-cat{{ category_item.id }}-name" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ category_item.name }}  
             </div>
             

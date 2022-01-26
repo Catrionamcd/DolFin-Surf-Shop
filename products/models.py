@@ -135,7 +135,6 @@ class ProductInventory(models.Model):
         """
         verbose_name_plural = 'Product Inventory'
 
-    class Meta:
         constraints = [
             models.UniqueConstraint(fields=['product', 'product_colour', 'size'], name='product_inventory_constraint')  # noqa
         ]

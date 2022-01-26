@@ -5,7 +5,7 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from products.models import Product, ProductInventory
+from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
@@ -64,7 +64,6 @@ def checkout(request):
                         order_line_item = OrderLineItem(
                             order=order,
                             product=product,
-                            product_inventory=None,
                             quantity=item_data,
                         )
                         order_line_item.save()
@@ -73,9 +72,7 @@ def checkout(request):
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
-                                product_inventory=None,
                                 quantity=quantity,
-                                # product_size=size,
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
