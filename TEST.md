@@ -123,6 +123,8 @@ Pass/Fail : **Pass**
 
 ![alt text](assets/test-documentation/Charge-Success.png)
 
+- The order history can be seen for this users profile.
+
 ![alt text](assets/test-documentation/Test-Profile-History.png)
 
 - Check adding reviews to a product.
@@ -299,7 +301,7 @@ This refers to the following lines which are built in to Django settings. This i
 
 - checkout/static/js/stripe_element.js
 
-![alt text](assets/code-validation/Checkout_JS.png)
+![alt text](assets/code-validation/Checkout-JS.png)
 
 
 - main.html- embedded js

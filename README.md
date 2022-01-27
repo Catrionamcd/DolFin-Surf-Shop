@@ -361,7 +361,7 @@ The application uses Heroku for deployment:
 ### Deployment
 1. In the top menu bar select 'Deploy'.
 2. In the 'Deployment method' section select 'Github' and click the connect to Github button to confirm.
-3. In the 'search' box enter the Github repository name for the project. Click search and then click connect to link the heroku app with the Github repository. The box will confirm that heroku is connected to the repository which in this case is [](https://github.com/catrionamcd/dolfin-surf-shop).
+3. In the 'search' box enter the Github repository name for the project. Click search and then click connect to link the heroku app with the Github repository. The box will confirm that heroku is connected to the repository which in this case is (https://github.com/catrionamcd/dolfin-surf-shop).
 4. Scroll down to select either automatic or manual deployment. For this project automatic deployment was selected. If you wish to select automatic deployment select the button 'Enable Automatic Deploys'. This will rebuild the app every time a change is pushed to Github. If you wish to manually deploy click the button 'Deploy Branch'. The default 'Master' option in the dropdown menu should be selected in both cases.
 5. When the app is deployed a message 'Your app was successfully deployed' will be shown. Click 'view' to see the deployed app in the browser. The live deployment of the project can be seen here
 6. The app starts automatically and can be restarted by pressing the 'Run Program' button.
