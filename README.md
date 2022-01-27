@@ -222,10 +222,24 @@ summary screen of their order details.
 - A confirmation of the order will be also be emailed to the them from the DolFin Surf Shop.
 
 ### Product Management
+If the user is logged in as the administrator or superuser the option for 'Product Management' will appear on the dropdown menu on the navigation bar.
+
 ![alt text](assets/documentation/Product-Edit-Screen1.png)
 
 ![alt text](assets/documentation/Product-Edit-Screen2.png)
+
+- There will also be and edit button on the Products screen and the Product details screen. 
+- If there are no orders attached to the product a delete button will also appear.  
+- If there are no orders attahced to a product and the administrator or superuser chooses to delete a product a modal will appear to confirm if this is the course of action that they wish to persue.
+- A product may also be made obsolete by entering 'Y' in the obsolete flag on the Products Management Screen.
+
+![alt text](assets/documentation/Obsolete-Product.png)
+
+- If a product is made obsolete, it will not appear in the list of products for sale.
+
 ### Profile & Order History
+
+
 
 ![alt text](assets/documentation/Dolfin-Profile-Screen.png)
 
@@ -301,26 +315,10 @@ I then had to add a new database and update my env.py file with the new Postgres
 ## Testing
 Manual Testing Documentation [here](TEST.md)
 
-### Validator Testing
-
-## CSS
-[W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator)
-![alt text](assets/images/.png)
-
-## HTML
-[Nu Html Checker Validator](https://validator.w3.org/)
-![alt text](assets/images/.png)
-
-## Javascript
-[JShint](https://jshint.com/)
-
-## Python
- 
-I ran the admin.py, forms.py, models.py and urls.py through [PEP8](http://pep8online.com) online checker and all now have no errors.
 
 ## Deployment
 
-The application uses Heroku for deployement
+The application uses Heroku for deployment:
 
 ### Create the application
 1. Create the requirements file the Heroku will use to import the dependencies required for deployment: type pip3 freeze > requirements.txt. 
@@ -329,7 +327,7 @@ The application uses Heroku for deployement
 3. Create an account by entering your email address and a password
 4. Activate the account through the authentication email sent to your email account
 5. Click the new button and select create a new app from the dropdown menu
-6. Enter a name for the application which must be unique, in this case the app name is called views-it.
+6. Enter a name for the application which must be unique, in this case the app name is called dolfin-suf-shop.
 7. Select a region, in this case Europe
 8. Click create app
 ## Attach the PostgreSQL databae
@@ -348,7 +346,7 @@ The application uses Heroku for deployement
 ### Deployment
 1. In the top menu bar select 'Deploy'.
 2. In the 'Deployment method' section select 'Github' and click the connect to Github button to confirm.
-3. In the 'search' box enter the Github repository name for the project. Click search and then click connect to link the heroku app with the Github repository. The box will confirm that heroku is connected to the repository which in this case is [](https://github.com/catrionamcd/).
+3. In the 'search' box enter the Github repository name for the project. Click search and then click connect to link the heroku app with the Github repository. The box will confirm that heroku is connected to the repository which in this case is [](https://github.com/catrionamcd/dolfin-surf-shop).
 4. Scroll down to select either automatic or manual deployment. For this project automatic deployment was selected. If you wish to select automatic deployment select the button 'Enable Automatic Deploys'. This will rebuild the app every time a change is pushed to Github. If you wish to manually deploy click the button 'Deploy Branch'. The default 'Master' option in the dropdown menu should be selected in both cases.
 5. When the app is deployed a message 'Your app was successfully deployed' will be shown. Click 'view' to see the deployed app in the browser. The live deployment of the project can be seen here
 6. The app starts automatically and can be restarted by pressing the 'Run Program' button.

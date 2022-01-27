@@ -83,96 +83,119 @@ Similarly when a 500 error occurs:
 ![alt text](assets/code-validation/Products-Html.png)
 ## Python
 
-**Bag**
-*Apps.py*
+
+
+- Bag/Apps.py
+
 ![alt text](assets/code-validation/Bag-Apps-Py.png)
-**Bag**
-*Context.py*
+
+- Bag/Context.py
+
 ![alt text](assets/code-validation/Bag-Context-Py.png)
-**Bag**
-*Urls.py*
+
+- Bag/Urls.py
+
 ![alt text](assets/code-validation/Bag-Urls-Py.png)
-**Bag**
-*Views.py*
+
+- Bag/Views.py
+
 ![alt text](assets/code-validation/Bag-Views-Py.png)
-**Bag/templatetags**
-*bag_tools.py*
+
+- Bag/templatetags/bag_tools.py
+
 ![alt text](assets/code-validation/Bag-Tools-Py.png)
 
-**Checkout**
-*Admin.py*
+- checkout/Admin.py
+
 ![alt text](assets/code-validation/Checkout-Admin-Py.png)
-**Checkout**
-*Apps.py*
+
+- Checkout/Apps.py
+
 ![alt text](assets/code-validation/Checkout-Apps-Py.png)
-**Checkout**
-*Forms.py*
+
+- Checkout/Forms.py
+
 ![alt text](assets/code-validation/Checkout-Forms-Py.png)
-**Checkout**
-*Models.py*
+
+- Checkout/Models.py
+
 ![alt text](assets/code-validation/Checkout-Models-Py.png)
-**Checkout**
-*Views.py*
+
+- Checkout/Views.py
+
 ![alt text](assets/code-validation/Checkout-Views-Py.png)
-**Checkout**
-*Webhooks_Handler.py*
+
+- Checkout/Webhooks_Handler.py
+
 ![alt text](assets/code-validation/Checkout-Webhooks-Handler-Py.png)
-**Checkout**
-*Webhook.py*
+
+- Checkout/Webhook.py
+
 ![alt text](assets/code-validation/Checkout-Webhook-Py.png)
 
-**Home**
-*Apps.py*
+- Home/Apps.py
+
 ![alt text](assets/code-validation/Home-Apps-Py.png)
-**Home**
-*Urls.py*
+
+- Home/Urls.py
+
 ![alt text](assets/code-validation/Home-Urls-Py.png)
-**Home**
-*Views.py*
+
+- Home/Views.py
 ![alt text](assets/code-validation/Home-Views-Py.png)
 
-**Products**
-*Admin.py*
+
+- Products/Admin.py
+
 ![alt text](assets/code-validation/Products-Admin-Py.png)
-**Products**
-*Apps.py*
+
+- Products/Apps.py
+
 ![alt text](assets/code-validation/Products-Apps-Py.png)
-**Products**
-*Forms.py*
+
+- Products/Forms.py
+
 ![alt text](assets/code-validation/Products-Forms-Py.png)
-**Products**
-*Models.py*
+
+- Products/Models.py
+
 ![alt text](assets/code-validation/Products-Models-Py.png)
-**Products**
-*Urls.py*
+
+- Products/Urls.py
+
 ![alt text](assets/code-validation/Products-Urls-Py.png)
-**Products**
-*Views.py*
+
+- Products/Views.py
+
 ![alt text](assets/code-validation/Products-View-Py.png)
-**Products**
-*Widgets.py*
+
+- Products/Widgets.py
+
 ![alt text](assets/code-validation/Products-Widgets-Py.png)
 
-**Profiles**
-*Admin.py*
-![alt text](assets/code-validation/Profiles-Admin-Py.png)
-**Profiles**
-*Apps.py*
+
+- Profiles/Apps.py
+
 ![alt text](assets/code-validation/Profiles-Apps-Py.png)
-**Profiles**
-*Forms.py*
+
+- Profiles/Forms.py
+
 ![alt text](assets/code-validation/Profiles-Forms-Py.png)
-**Profiles**
-*Models.py*
+
+- Profiles/Models.py
+
 ![alt text](assets/code-validation/Profiles-Models-Py.png)
-**Prodfiles**
-*Urls.py*
+
+- Prodfiles/Urls.py
+
 ![alt text](assets/code-validation/Profiles-Urls-Py.png)
-**Profiles**
-*Views.py*
+
+- Profiles/Views.py
+
 ![alt text](assets/code-validation/Profiles-View-Py.png)
 
-**Settings.py**
+- Settings.py
+
 ![alt text](assets/code-validation/Settings-Py.png)
 
 This refers to the following lines which are built in to Django settings. This is a known Django error and it is acceptable not to force a line break in these cases.
