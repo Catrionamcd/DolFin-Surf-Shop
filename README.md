@@ -154,6 +154,8 @@ The homepage on DolFIn Surf Shop will display a image card for each category in 
 - The new sale price for each product within the sale category will be calculated and displayed along with the original price of the product throughout the site.
 
 - A side menu allows the user to also select a category or categories depending on what they have choosen. 
+- A category may have sub-categories which are held in a separate Sub Category model. There will be a dropdown menu if a category has sub-categories attached to it.
+- A shopper can filter for sub-categories.
 
 ![alt text](assets/documentation/Side-Menu.png)
 - A shopper may also decide to filter by certain brands.
@@ -230,7 +232,7 @@ If the user is logged in as the administrator or superuser the option for 'Produ
 
 - There will also be and edit button on the Products screen and the Product details screen. 
 - If there are no orders attached to the product a delete button will also appear.  
-- If there are no orders attahced to a product and the administrator or superuser chooses to delete a product a modal will appear to confirm if this is the course of action that they wish to persue.
+- If there are no orders attached to a product and the administrator or superuser chooses to delete a product a modal will appear to confirm if this is the course of action that they wish to persue.
 - A product may also be made obsolete by entering 'Y' in the obsolete flag on the Products Management Screen.
 
 ![alt text](assets/documentation/Obsolete-Product.png)
@@ -239,11 +241,24 @@ If the user is logged in as the administrator or superuser the option for 'Produ
 
 ### Profile & Order History
 
-
+Profile details of a registered user of the site can be saved and updated. The order history attached to this profile can be displayed for the shopper or administrators information.
 
 ![alt text](assets/documentation/Dolfin-Profile-Screen.png)
 
 ### Gift Card 
+
+Facility to purchase a gift card.
+- The administrator or superuser can set up a category gift card. There is a boolean field in the 
+category model, that is set to true for gift card. 
+- The shopper may purchase a gift card as a product.
+- The gift card model is updated with a unique code.
+- This code will be displayed in the order summary screen. 
+- The gift card model was set up in this way so that the administrator or superuser can set up as many
+products as they see fit with an value amount of their choice depending on demand.
+
+![alt text](assets/documentation/Dolfin-Gift-Card-Screen.png)
+
+
 ## SEO & Marketing
 
 - A sitemap.xml file was created for the site.
@@ -390,6 +405,11 @@ https://css-tricks.com/indeterminate-checkboxes/#top-of-site
 * [Wetsuit Outlet](https://www.wetsuitoutlet.ie) - was used for images of the various different products.
 * [Billabong](https://www.billabong-store.ie) - was used for images of different colour wetsuits.
 
+There are so many people I would like to thank for helping me pull this project together.
 
+- All of the women who started this course over 9 months ago, who have worked so hard despite lots of other challenges in their lives. They have helped each other and are unbelievably kind and generous with their time and knowledge. I would especially like thank my good friend Siobhan Gorman for her constant support and help.
+- Our class co-ordinator, Kasia Bogucka, who has been their with us every step of the way, encouraging and supportive. 
+- My mentor, Maria Hynes, who is always so patience and accommodating.
+- My family who helped with ideas, logic and great design ideas.  
 
 
